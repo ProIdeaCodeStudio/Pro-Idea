@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, rgb(48, 47, 47), black, rgb(48, 47, 47));
+            animation: bgMove 6s infinite;
+             background-size: 200% 100%;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        .container {
+            margin: 20px;
+            color: white;
+        }
+
+        .container a {
+            color: white;
+        }
+
+        input {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgb(68, 67, 67);
+            border: none;
+            color: white;
+            margin-bottom: 10px;
+        }
+        input:hover{
+            scale: 1.1;
+           
+        }
+        .name {
+            width: 80px;
+            border-radius: 5px;
+        }
+
+        .name:hover{
+            scale: 1.1;
+           
+        }
+        #button-container {
+            text-align: center;
+        }
+
+        .social-links {
+            text-align: center;
+        }
+
+        .social-links a {
+            margin-left: 15px;
+        }
+
+        .social-links a:first-child {
+            margin-left: 0;
+        }
+
+        .name-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .name-row .name:last-child {
+            margin-left: 0;
+        }
+
+        button {
+            width: 80%;
+            padding: 10px;
+            background: linear-gradient(to right,green,black,green);
+            color: white;
+            border-radius: 6px;
+            transition-duration: 0.8s;
+            background-size: 200% 100%;
+        }
+        button:hover{
+            animation: bgMove 6s infinite;
+        }
+        .or {
+            font-size: 20px;
+            border: white 1.5px solid;
+            text-decoration: none;
+            border-radius: 6px;
+            padding: 10px;
+            color: white;
+        }
+
+        @keyframes bgMove{
+            0%{
+                background-position:0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position:0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create an account</h1>
+        <p>Already have an account? <a href="#login">Log in</a></p>
+        
+        <form action="#">
+            <div class="name-row">
+                <input type="text" id="First" class="name" placeholder="First name">
+                <input type="text" class="name" placeholder="Last name" >
+            </div> 
+            <input type="email" placeholder="Email" ><br> 
+            <input type="password" placeholder="Enter your password" > <br> <br>
+            <input type="checkbox" id="agree" required> I agree to the <a href="#terms">Terms & Conditions</a> <br> <br>
+            <div id="button-container"><button type="submit" onclick="createAccount()">Create account</button></div>
+        </form>
+    </div>
+
+    <div class="social-links">
+        <a href="#google" class="or">Google</a> <a href="#apple" class="or">Apple</a>
+    </div>
+</body>
+<script>
+    function createAccount() {
+   let firstname = document.getElementById('First').value
+   alert (firstname + " " + "account created successfully")
+    }
+</script>
+</html>

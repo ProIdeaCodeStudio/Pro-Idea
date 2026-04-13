@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Idea — Ember Web Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+/* ─── CSS VARIABLES ─────────────────────────────── */
+:root {
+  /* Core Palette */
+  --deep-ink:      #111008;
+  --ash:           #1E1B12;
+  --ember-fog:     #8A7A5A;
+  --parchment:     #DDD0B3;
+  --warm-white:    #F5EDD8;
+  --burnt-ember:   #B5660F;
+  --amber:         #E8941A;
+  --ember-tint:    #F2B455;
+
+  /* Typography */
+  --font-display:  'Syne', sans-serif;
+  --font-accent:   'Cormorant Garamond', serif;
+  --font-body:     'Plus Jakarta Sans', sans-serif;
+  --font-label:    'DM Mono', monospace;
+
+  /* Spacing Scale */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  32px;
+  --space-xl:  64px;
+  --space-2xl: 96px;
+
+  /* Border */
+  --border-thin: 1px solid var(--ash);
+  --border-amber: 1px solid var(--amber);
+}
+
+/* ─── RESET ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--deep-ink);
+  color: var(--warm-white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.section { padding: var(--space-2xl) 0; border-bottom: var(--border-thin); }
+.section:last-child { border-bottom: none; }
+
+/* ─── SECTION LABELS ─────────────────────────────── */
+.section-label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--warm-white);
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+}
+.amber-line {
+  width: 40px;
+  height: 1px;
+  background: var(--amber);
+  margin-bottom: var(--space-lg);
+}
+
+/* ─── COVER ──────────────────────────────────────── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(232,148,26,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cover-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--ember-fog);
+  text-transform: uppercase;
+  margin-bottom: var(--space-lg);
+}
+.cover-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 100px);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: var(--space-md);
+}
+.cover-wordmark span { color: var(--amber); }
+.cover-tagline {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--parchment);
+  margin-bottom: var(--space-xl);
+}
+.cover-meta {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--ember-fog);
+}
+.cover-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 24px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--ember-fog);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cover-scroll::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--ember-fog);
+}
+
+/* ─── COLOUR SYSTEM ──────────────────────────────── */
+.colour-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: var(--space-lg);
+}
+.colour-grid.row2 { margin-bottom: 0; }
+.swatch {
+  border-radius: 8px;
+  overflow: hidden;
+  border: var(--border-thin);
+}
+.swatch-block { height: 80px; }
+.swatch-info { background: var(--ash); padding: 12px; }
+.swatch-role {
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ember-fog);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.swatch-name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--warm-white);
+  margin-bottom: 2px;
+}
+.swatch-hex {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--amber);
+}
+.swatch-use {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--ember-fog);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.colour-group-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--ember-fog);
+  margin-bottom: var(--space-sm);
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────── */
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.type-card {
+  background: var(--ash);
+  border: var(--border-thin);
+  border-radius: 8px;
+  padding: var(--space-lg);
+}
+.type-role {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  margin-bottom: var(--space-md);
+}
+.type-sample-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 42px;
+  color: var(--warm-white);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+.type-sample-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--parchment);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+.type-sample-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--warm-white);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+}
+.type-sample-label {
+  font-family: var(--font-label);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--ember-fog);
+}
+.type-meta {
+  margin-top: var(--space-md);
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--ember-fog);
+  border-top: var(--border-thin);
+  padding-top: var(--space-md);
+}
+
+/* ─── TYPE SCALE ─────────────────────────────────── */
+.scale-table { width: 100%; border-collapse: collapse; margin-top: var(--space-md); }
+.scale-table th {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--ember-fog);
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: var(--border-thin);
+}
+.scale-table td {
+  padding: 14px 0;
+  border-bottom: var(--border-thin);
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--ember-fog);
+  vertical-align: middle;
+}
+.scale-table td:first-child { color: var(--amber); width: 100px; }
+.scale-sample { font-family: var(--font-display); font-weight: 800; color: var(--warm-white); }
+
+/* ─── COMPONENTS ─────────────────────────────────── */
+.component-section { margin-bottom: var(--space-xl); }
+.component-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--ember-fog);
+  margin-bottom: var(--space-md);
+}
+.component-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-bottom: var(--space-md); }
+
+/* Buttons */
+.btn {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary { background: var(--amber); color: var(--deep-ink); }
+.btn-primary:hover { background: var(--burnt-ember); }
+.btn-ghost { background: transparent; color: var(--warm-white); border: 1px solid var(--ember-fog); }
+.btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+.btn-outline { background: transparent; color: var(--amber); border: 1px solid var(--amber); }
+.btn-outline:hover { background: var(--amber); color: var(--deep-ink); }
+.btn-sm { padding: 8px 18px; font-size: 10px; }
+.btn-lg { padding: 18px 40px; font-size: 12px; }
+
+/* Nav */
+.nav-example {
+  background: var(--deep-ink);
+  border-bottom: var(--border-thin);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.nav-brand { font-family: var(--font-display); font-size: 20px; font-weight: 800; }
+.nav-brand span { color: var(--amber); }
+.nav-links { display: flex; gap: 32px; }
+.nav-link {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--ember-fog);
+  text-decoration: none;
+}
+.nav-link.active { color: var(--amber); }
+.nav-cta {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: var(--amber);
+  color: var(--deep-ink);
+  padding: 8px 18px;
+  border-radius: 3px;
+}
+
+/* Cards */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 12px; }
+.card {
+  background: var(--ash);
+  border: var(--border-thin);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.card-header {
+  height: 100px;
+  background: var(--deep-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: var(--border-thin);
+  position: relative;
+}
+.card-number {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 800;
+  color: var(--ash);
+  position: absolute;
+  right: 16px;
+  bottom: -8px;
+  line-height: 1;
+}
+.card-tag {
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+.card-body { padding: 20px; }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--warm-white);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.card-text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ember-fog);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.card-divider { height: 1px; background: var(--amber); width: 30px; margin-bottom: 14px; }
+.card-link {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--amber);
+  text-decoration: none;
+}
+
+/* Tags / Badges */
+.tag {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 5px 12px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.tag-amber { background: var(--amber); color: var(--deep-ink); }
+.tag-outline { border: 1px solid var(--amber); color: var(--amber); background: transparent; }
+.tag-fog { background: var(--ash); color: var(--ember-fog); border: var(--border-thin); }
+.tag-tint { background: rgba(242,180,85,0.1); color: var(--ember-tint); }
+
+/* Inputs */
+.input-group { display: flex; flex-direction: column; gap: 6px; max-width: 340px; margin-bottom: 12px; }
+.input-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--ember-fog);
+}
+.input-field {
+  background: var(--ash);
+  border: 1px solid var(--ember-fog);
+  color: var(--warm-white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  padding: 12px 16px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-field:focus { border-color: var(--amber); }
+.input-field::placeholder { color: var(--ember-fog); }
+.input-field.error { border-color: #C0392B; }
+
+/* Divider */
+.amber-divider { height: 1px; background: var(--amber); margin: var(--space-lg) 0; }
+.fog-divider { height: 1px; background: var(--ash); margin: var(--space-lg) 0; }
+
+/* Hero Section Example */
+.hero-example {
+  background: var(--deep-ink);
+  border: var(--border-thin);
+  border-radius: 8px;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.hero-example::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(232,148,26,0.08) 0%, transparent 70%);
+}
+.hero-pre {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--amber);
+  margin-bottom: var(--space-md);
+}
+.hero-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 1.05;
+  color: var(--warm-white);
+  margin-bottom: var(--space-md);
+}
+.hero-sub {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--parchment);
+  margin-bottom: var(--space-lg);
+  max-width: 480px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-line {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--amber) 0%, transparent 60%);
+}
+
+/* Quote Block */
+.quote-block {
+  background: var(--ash);
+  border-left: 2px solid var(--amber);
+  padding: 24px 28px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 12px;
+}
+.quote-text {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--warm-white);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.quote-source {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amber);
+}
+
+/* Footer Example */
+.footer-example {
+  background: var(--ash);
+  border: var(--border-thin);
+  border-radius: 8px;
+  padding: 40px;
+}
+.footer-brand { font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+.footer-brand span { color: var(--amber); }
+.footer-tagline { font-family: var(--font-accent); font-style: italic; font-size: 14px; color: var(--parchment); margin-bottom: var(--space-md); }
+.footer-divider { height: 1px; background: var(--amber); width: 40px; margin-bottom: var(--space-md); }
+.footer-pillars { font-family: var(--font-label); font-size: 10px; letter-spacing: 3px; color: var(--ember-fog); }
+
+/* Spacing */
+.spacing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.spacing-item { text-align: center; }
+.spacing-block { background: var(--ash); border: var(--border-thin); margin: 0 auto 8px; border-radius: 4px; }
+.spacing-name { font-family: var(--font-label); font-size: 10px; color: var(--amber); letter-spacing: 1px; }
+.spacing-val { font-family: var(--font-label); font-size: 10px; color: var(--ember-fog); }
+
+/* Rules */
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.rule-card { padding: 20px; border-radius: 6px; }
+.rule-do { background: rgba(232,148,26,0.05); border: 1px solid rgba(232,148,26,0.2); }
+.rule-dont { background: rgba(192,57,43,0.05); border: 1px solid rgba(192,57,43,0.2); }
+.rule-header { font-family: var(--font-label); font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; }
+.rule-do .rule-header { color: var(--amber); }
+.rule-dont .rule-header { color: #C0392B; }
+.rule-text { font-family: var(--font-body); font-size: 13px; color: var(--parchment); font-weight: 300; line-height: 1.5; }
+
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="container">
+    <div class="cover-label">Pro Idea · Ember Identity · Web Design System</div>
+    <div class="cover-wordmark">Pro <span>Idea</span></div>
+    <div class="cover-tagline">"From Idea to Impact."</div>
+    <div class="amber-line"></div>
+    <div class="cover-meta">DESIGN · AI · STORYTELLING · @PROIDEA · APRIL 2026</div>
+  </div>
+  <div class="cover-scroll">SCROLL</div>
+</div>
+
+<!-- COLOUR SYSTEM -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">01 — Colour System</div>
+    <div class="section-title">8-Colour Ember Palette</div>
+    <div class="amber-line"></div>
+
+    <div class="colour-group-label">DARKS & NEUTRALS</div>
+    <div class="colour-grid">
+      <div class="swatch">
+        <div class="swatch-block" style="background:#111008;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Base · Background</div>
+          <div class="swatch-name">Deep Ink</div>
+          <div class="swatch-hex">#111008</div>
+          <div class="swatch-use">Primary background. The foundation of every layout.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#1E1B12; border-bottom:1px solid #2a2518;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Surface · Cards</div>
+          <div class="swatch-name">Ash</div>
+          <div class="swatch-hex">#1E1B12</div>
+          <div class="swatch-use">Card backgrounds, section surfaces, layered depth.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#8A7A5A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Muted · Secondary</div>
+          <div class="swatch-name">Ember Fog</div>
+          <div class="swatch-hex">#8A7A5A</div>
+          <div class="swatch-use">Secondary text, borders, placeholders, metadata.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#DDD0B3;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Neutral · Supporting</div>
+          <div class="swatch-name">Parchment</div>
+          <div class="swatch-hex">#DDD0B3</div>
+          <div class="swatch-use">Input fields, dividers, secondary body text.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="colour-group-label" style="margin-top:24px;">LIGHTS & ACCENTS</div>
+    <div class="colour-grid row2">
+      <div class="swatch">
+        <div class="swatch-block" style="background:#F5EDD8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Neutral · Primary Text</div>
+          <div class="swatch-name">Warm White</div>
+          <div class="swatch-hex">#F5EDD8</div>
+          <div class="swatch-use">All primary text on dark backgrounds. Never use #FFF.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#E8941A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Accent · Primary CTA</div>
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-hex">#E8941A</div>
+          <div class="swatch-use">CTAs, highlights, links, dividers. Accent only — never fill large areas.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#B5660F;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Accent · Hover/Active</div>
+          <div class="swatch-name">Burnt Ember</div>
+          <div class="swatch-hex">#B5660F</div>
+          <div class="swatch-use">Hover states, pressed buttons, active nav items.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#F2B455;"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Accent · Soft Highlight</div>
+          <div class="swatch-name">Ember Tint</div>
+          <div class="swatch-hex">#F2B455</div>
+          <div class="swatch-use">Tags, icon backgrounds, soft amber accents.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">02 — Typography</div>
+    <div class="section-title">Type System</div>
+    <div class="amber-line"></div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="type-role">DISPLAY — SYNE 800</div>
+        <div class="type-sample-display">Pro<br>Idea</div>
+        <div class="type-meta">Headlines · Brand Name · Titles · Hero Text</div>
+      </div>
+      <div class="type-card">
+        <div class="type-role">ACCENT — CORMORANT GARAMOND ITALIC 300</div>
+        <div class="type-sample-accent">"From Idea<br>to Impact."</div>
+        <div class="type-meta">Taglines · Pull Quotes · Captions · Subheadings</div>
+      </div>
+      <div class="type-card">
+        <div class="type-role">BODY — PLUS JAKARTA SANS 300</div>
+        <div class="type-sample-body">Pro Idea is a creative brand built at the intersection of design, technology, and storytelling. We help ideas find their form.</div>
+        <div class="type-meta">Body Copy · Descriptions · Paragraphs · UI Text</div>
+      </div>
+      <div class="type-card">
+        <div class="type-role">LABEL — DM MONO 300–400</div>
+        <div class="type-sample-label">DESIGN · AI · STORYTELLING<br>@PROIDEA · APRIL 2026</div>
+        <div class="type-meta">Tags · Handles · Metadata · Section Labels · Captions</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <div class="section-label" style="margin-bottom:8px;">TYPE SCALE — WEB</div>
+      <table class="scale-table">
+        <thead>
+          <tr>
+            <th>TOKEN</th>
+            <th>SIZE</th>
+            <th>FONT</th>
+            <th>USE</th>
+            <th style="width:40%;">SAMPLE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>hero</td>
+            <td style="color:var(--parchment);">72–96px</td>
+            <td style="color:var(--parchment);">Syne 800</td>
+            <td style="color:var(--parchment);">Hero headline</td>
+            <td><span class="scale-sample" style="font-size:40px; line-height:1;">Pro Idea</span></td>
+          </tr>
+          <tr>
+            <td>h1</td>
+            <td style="color:var(--parchment);">48px</td>
+            <td style="color:var(--parchment);">Syne 800</td>
+            <td style="color:var(--parchment);">Page titles</td>
+            <td><span class="scale-sample" style="font-size:32px;">From Idea</span></td>
+          </tr>
+          <tr>
+            <td>h2</td>
+            <td style="color:var(--parchment);">36px</td>
+            <td style="color:var(--parchment);">Syne 800</td>
+            <td style="color:var(--parchment);">Section titles</td>
+            <td><span class="scale-sample" style="font-size:24px;">Design System</span></td>
+          </tr>
+          <tr>
+            <td>h3</td>
+            <td style="color:var(--parchment);">24px</td>
+            <td style="color:var(--parchment);">Syne 700</td>
+            <td style="color:var(--parchment);">Card titles</td>
+            <td><span class="scale-sample" style="font-size:18px; font-weight:700;">Card Title</span></td>
+          </tr>
+          <tr>
+            <td>quote</td>
+            <td style="color:var(--parchment);">20–26px</td>
+            <td style="color:var(--parchment);">Cormorant Italic</td>
+            <td style="color:var(--parchment);">Pull quotes</td>
+            <td><span style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--parchment);">"The idea is everything."</span></td>
+          </tr>
+          <tr>
+            <td>body</td>
+            <td style="color:var(--parchment);">15–16px</td>
+            <td style="color:var(--parchment);">Plus Jakarta 300</td>
+            <td style="color:var(--parchment);">Paragraphs</td>
+            <td><span style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:14px; color:var(--warm-white);">Where vision meets execution.</span></td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td style="color:var(--parchment);">10–12px</td>
+            <td style="color:var(--parchment);">DM Mono 300</td>
+            <td style="color:var(--parchment);">Tags, metadata</td>
+            <td><span style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--amber);">@PROIDEA · 2026</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- COMPONENTS -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">03 — Components</div>
+    <div class="section-title">UI Components</div>
+    <div class="amber-line"></div>
+
+    <!-- Nav -->
+    <div class="component-section">
+      <div class="component-label">NAVIGATION</div>
+      <div class="nav-example">
+        <div class="nav-brand">Pro <span>Idea</span></div>
+        <div class="nav-links">
+          <a class="nav-link active" href="#">Work</a>
+          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#">Services</a>
+        </div>
+        <div class="nav-cta">GET IN TOUCH</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="component-section">
+      <div class="component-label">BUTTONS</div>
+      <div class="component-row">
+        <button class="btn btn-primary">Primary CTA</button>
+        <button class="btn btn-outline">Outlined</button>
+        <button class="btn btn-ghost">Ghost</button>
+      </div>
+      <div class="component-row">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="component-section">
+      <div class="component-label">TAGS & BADGES</div>
+      <div class="component-row">
+        <span class="tag tag-amber">Design</span>
+        <span class="tag tag-outline">AI</span>
+        <span class="tag tag-fog">Storytelling</span>
+        <span class="tag tag-tint">Free Entry</span>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="component-section">
+      <div class="component-label">CARDS</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-tag">DESIGN</div>
+            <div class="card-number">01</div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Visual Identity</div>
+            <div class="card-text">Brand systems that speak before words do.</div>
+            <div class="card-divider"></div>
+            <a class="card-link" href="#">VIEW WORK →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-tag">AI</div>
+            <div class="card-number">02</div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">AI Integration</div>
+            <div class="card-text">Smarter workflows, human-led creativity.</div>
+            <div class="card-divider"></div>
+            <a class="card-link" href="#">LEARN MORE →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-tag">STORY</div>
+            <div class="card-number">03</div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Storytelling</div>
+            <div class="card-text">Ideas that resonate, visuals that remain.</div>
+            <div class="card-divider"></div>
+            <a class="card-link" href="#">EXPLORE →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="component-section">
+      <div class="component-label">FORM INPUTS</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+          <div class="input-group">
+            <label class="input-label">YOUR NAME</label>
+            <input class="input-field" type="text" placeholder="Promise Adeyemi">
+          </div>
+          <div class="input-group">
+            <label class="input-label">EMAIL ADDRESS</label>
+            <input class="input-field" type="email" placeholder="hello@proidea.com">
+          </div>
+        </div>
+        <div>
+          <div class="input-group" style="max-width:100%;">
+            <label class="input-label">MESSAGE</label>
+            <textarea class="input-field" rows="5" placeholder="Tell me about your project..." style="resize:none; font-family:var(--font-body); font-weight:300;"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="component-section">
+      <div class="component-label">QUOTE BLOCK</div>
+      <div class="quote-block">
+        <div class="quote-text">"The idea is the beginning. Execution is everything."</div>
+        <div class="quote-source">PRO IDEA · FROM IDEA TO IMPACT</div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="component-section">
+      <div class="component-label">HERO SECTION</div>
+      <div class="hero-example">
+        <div class="hero-pre">WHERE VISION MEETS EXECUTION</div>
+        <div class="hero-h1">Design that<br>moves people.</div>
+        <div class="hero-sub">"From Idea to Impact." — Pro Idea is a creative brand at the intersection of design, AI, and storytelling.</div>
+        <div class="hero-actions">
+          <button class="btn btn-primary">View Work</button>
+          <button class="btn btn-ghost">About Pro Idea</button>
+        </div>
+        <div class="hero-line"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="component-section">
+      <div class="component-label">FOOTER</div>
+      <div class="footer-example">
+        <div class="footer-brand">Pro <span>Idea</span></div>
+        <div class="footer-tagline">"From Idea to Impact."</div>
+        <div class="footer-divider"></div>
+        <div class="footer-pillars">DESIGN · AI · STORYTELLING · @PROIDEA · 2026</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SPACING -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">04 — Spacing</div>
+    <div class="section-title">Spacing Scale</div>
+    <div class="amber-line"></div>
+    <div class="spacing-grid">
+      <div class="spacing-item">
+        <div class="spacing-block" style="width:4px; height:4px;"></div>
+        <div class="spacing-name">XS</div>
+        <div class="spacing-val">4px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-block" style="width:8px; height:8px;"></div>
+        <div class="spacing-name">SM</div>
+        <div class="spacing-val">8px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-block" style="width:16px; height:16px;"></div>
+        <div class="spacing-name">MD</div>
+        <div class="spacing-val">16px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-block" style="width:32px; height:32px;"></div>
+        <div class="spacing-name">LG</div>
+        <div class="spacing-val">32px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-block" style="width:64px; height:64px;"></div>
+        <div class="spacing-name">XL</div>
+        <div class="spacing-val">64px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-block" style="width:96px; height:96px;"></div>
+        <div class="spacing-name">2XL</div>
+        <div class="spacing-val">96px</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND RULES -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">05 — Brand Rules</div>
+    <div class="section-title">Do's & Don'ts</div>
+    <div class="amber-line"></div>
+    <div class="rules-grid">
+      <div class="rule-card rule-do">
+        <div class="rule-header">✓ DO</div>
+        <div class="rule-text">Use Deep Ink as the primary background on all dark layouts.</div>
+      </div>
+      <div class="rule-card rule-dont">
+        <div class="rule-header">✗ DON'T</div>
+        <div class="rule-text">Never use Amber as a background for large areas — it's an accent only.</div>
+      </div>
+      <div class="rule-card rule-do">
+        <div class="rule-header">✓ DO</div>
+        <div class="rule-text">Pair Syne 800 with Cormorant Italic for contrast between strength and elegance.</div>
+      </div>
+      <div class="rule-card rule-dont">
+        <div class="rule-header">✗ DON'T</div>
+        <div class="rule-text">Never use pure white (#FFFFFF). Always use Warm White (#F5EDD8) to keep the warmth.</div>
+      </div>
+      <div class="rule-card rule-do">
+        <div class="rule-header">✓ DO</div>
+        <div class="rule-text">Use thin horizontal amber lines and minimal borders as design elements — your visual signature.</div>
+      </div>
+      <div class="rule-card rule-dont">
+        <div class="rule-header">✗ DON'T</div>
+        <div class="rule-text">Never add drop shadows, gradients, or glow effects. Keep it flat and intentional.</div>
+      </div>
+      <div class="rule-card rule-do">
+        <div class="rule-header">✓ DO</div>
+        <div class="rule-text">Use Ash (#1E1B12) for card and section backgrounds to layer depth without going pure black.</div>
+      </div>
+      <div class="rule-card rule-dont">
+        <div class="rule-header">✗ DON'T</div>
+        <div class="rule-text">Never mix Burnt Ember and Ember Tint in the same element — use one amber variant per component.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="padding: 60px 24px; text-align:center; border-top: var(--border-thin);">
+  <div style="font-family:var(--font-display); font-size:28px; font-weight:800; margin-bottom:8px;">Pro <span style="color:var(--amber);">Idea</span></div>
+  <div style="font-family:var(--font-accent); font-style:italic; font-size:16px; color:var(--parchment); margin-bottom:16px;">"From Idea to Impact."</div>
+  <div style="width:40px; height:1px; background:var(--amber); margin:0 auto 16px;"></div>
+  <div style="font-family:var(--font-label); font-size:10px; letter-spacing:3px; color:var(--ember-fog);">EMBER WEB DESIGN SYSTEM · APRIL 2026</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+#navbar {
+    padding: 8px;
+}
+#banner {
+    width: 100%;
+    object-fit: cover;
+}
+#logo {
+    height: 30px;
+    margin: 0;
+}
+section {
+    margin: 10px;
+}
+#about {
+    display: flex;
+    max-width: 1000px;
+    padding:10px;
+    margin: 0 auto;
+}
+#description{
+    width: 50%;
+    padding: 0 8px;
+    /* margin-top: 0; */
+}
+#team{
+width: 50%;
+/* padding-left: 600px */
+}
+#team-image {
+    border-radius: 10px;
+    width: 100%;
+    /* padding-left: px; */
+    /* object-position: right; */
+}
+h1 {
+    text-align: center;
+    /* color: blueviolet; */
+}
+#banner {
+    width: 100%
+}
+.location {
+    color:gray;
+    margin-bottom: 20px;
+}
+h2 {
+    text-align: center;
+}
+#jobs {
+    margin: 0 auto;
+    max-width: 800px;
+}
+.job-role{
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+.apply {
+    float: right;
+}
+a {
+    text-decoration: none;
+}
+#footer {
+    background-color: rgb(220, 220, 220);
+    padding: 8px;
+    margin-top: 32px;
+    text-align: center;
+}
+/* #footer-links {
+    list-style: none;
+    display: flex
+} */
+#footer-links li {
+    display:inline;
+    margin: 16px;
+}
+.copyright {
+    color: gray;
+    text-align: center;
+}
