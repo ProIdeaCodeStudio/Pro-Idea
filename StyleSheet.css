@@ -168,15 +168,9 @@ p {
 }
 
 #services ol {
-  display: flex;
-  flex-wrap: wrap;
   gap: var(--space-xl);
   justify-content: center;
   list-style: none;
-}
-
-#services li {
-  flex: 0 1 300px;
 }
 
 #services a {
