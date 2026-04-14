@@ -170,6 +170,7 @@ p {
 #services ol {
   display:flex;
   flex-wrap:wrap;
+  flex-direction: row;
   gap: var(--space-xl);
   justify-content: center;
   list-style: none;
