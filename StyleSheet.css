@@ -1,5 +1,10 @@
 /* ===== CSS RESET & VARIABLES ===== */
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap');
+/* Fluid images */
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 :root {
   --deep-ink: #111008;
@@ -157,19 +162,18 @@ p {
 
 /* ===== SERVICES ===== */
 #services {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   margin: var(--space-2xl) 0;
 }
 
 #services ol {
-  display: flex;
-  flex-wrap: wrap;
+  display:flex;
+  flex-wrap:wrap;
   gap: var(--space-xl);
   justify-content: center;
   list-style: none;
 }
-
 #services li {
   flex: 0 1 300px;
 }
