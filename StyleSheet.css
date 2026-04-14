@@ -162,7 +162,7 @@ p {
 
 /* ===== SERVICES ===== */
 #services {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   margin: var(--space-2xl) 0;
 }
