@@ -162,7 +162,7 @@ p {
 
 /* ===== SERVICES ===== */
 #services {
-  /*display: flex;*/
+  display: flex;
   justify-content: center;
   margin: var(--space-2xl) 0;
 }
@@ -204,7 +204,7 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-lg);
-  margin: var(--space-2xl) 0;
+  margin: var(--space-lg) 0;
 }
 
 .project-card {
@@ -335,7 +335,7 @@ a:focus {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   #services ol {
     flex-direction: column;
     gap: var(--space-md);
@@ -347,5 +347,51 @@ a:focus {
 
   #footer {
     flex-direction: column;
+  }
+} */
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .type-sample-body {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  #navbar {
+    font-size: 22px;
+    padding: var(--space-md) 0;
+  }
+
+  #services ol {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  #services li {
+    flex: 1 1 100%;
+  }
+
+  #services a {
+    padding: var(--space-md);
+    font-size: 16px;
+  }
+
+  #footer {
+    flex-direction: column;
+  }
+
+  #support {
+    padding-left: 0;
+    padding-top: var(--space-md);
+  }
+}
+
+@media (min-width: 769px) {
+  #footer {
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
