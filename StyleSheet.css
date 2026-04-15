@@ -176,7 +176,7 @@ p {
   list-style: none;
 }
 #services li {
-  flex: 0 1 300px;
+  flex: 0 1 100%;
 }
 
 #services a {
@@ -186,7 +186,7 @@ p {
   display: block;
   font-size: 20px;
   font-weight: 500;
-  padding: var(--space-xl) var(--space-xl);
+  padding: var(--space-md) var(--space-md);
   text-align: center;
   text-decoration: none;
   transition: var(--transition);
@@ -202,7 +202,7 @@ p {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
   gap: var(--space-lg);
   margin: var(--space-2xl) 0;
 }
