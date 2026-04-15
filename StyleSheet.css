@@ -335,22 +335,6 @@ a:focus {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
-/* @media (max-width: 768px) {
-  #services ol {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  #services li {
-    flex: 1 1 100%;
-  }
-
-  #footer {
-    flex-direction: column;
-  }
-} */
-
-/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .type-sample-body {
     font-size: 24px;
