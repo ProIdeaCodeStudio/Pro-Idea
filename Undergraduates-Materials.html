@@ -4,13 +4,81 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Pro Idea - Educational services">
-        <meta name="keywords" content="education, students, University, 100 level, 200 level, 300 level, 400 level, 500 level, Pro Idea, educational materials, materials, PDF, pdfs, notes, past questions, answers, solutions">
+        <meta name="keywords" content="education, secondary school, students, University, 100 level, 200 level, 300 level, 400 level, 500 level, Pro Idea, educational materials, materials, PDF, pdfs, notes, past questions, answers, solutions">
         <meta name="author" content="Pro Idea">
-        <title>Pro Idea - Undergraduate Educational Materials</title>
+        <title>Pro Idea - Educational Services</title>
         <link rel="stylesheet" href="StyleSheet.css">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="Transparent logo.png" type="image/Brand-icon">
     </head>
-<body>
-    
-</body>
+    <body>
+        <header id="navbar">
+            <div class="container">
+                <p class="cover-label">Pro Idea</p>
+                <h1 class="cover-wordmark">Educational Services</h1>
+                <p class="cover-tagline">Comprehensive educational resources for students at Undergraduate level.</p>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="section">
+                <p class="section-label">Featured Resources</p>
+                <h2 class="section-title">100 level Resources</h2>
+                <div class="gallery">
+                    <div class="project-card">
+                        <a href="https://drive.google.com/file/d/12UotRidfTnhLCMQEDvTIy7reN2YK4jJr/view?usp=drivesdk" target="_blank">
+                            <div class="project-description">
+                                <h3 class="project-title">COMPLETE HANDOUT</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            // Check if already unlocked on this device
+            window.onload = function () {
+                if (localStorage.getItem('proidea_access') === 'granted') {
+                    document.getElementById('gate-overlay').classList.add('hidden');
+                }
+            };
+
+            function showStep(stepId) {
+                document.querySelectorAll('.gate-step').forEach(s => s.classList.remove('active'));
+                document.getElementById(stepId).classList.add('active');
+            }
+
+            function handleFormSubmit(e) {
+                e.preventDefault();
+                const name = document.getElementById('field-name').value.trim();
+                const email = document.getElementById('field-email').value.trim();
+                const phone = document.getElementById('field-phone').value.trim();
+                const error = document.getElementById('form-error');
+
+                if (!name || !email || !phone) {
+                    error.classList.add('visible');
+                    return;
+                }
+
+                error.classList.remove('visible');
+
+                // Store details locally
+                localStorage.setItem('proidea_name', name);
+                localStorage.setItem('proidea_email', email);
+                localStorage.setItem('proidea_phone', phone);
+
+                showStep('step-2');
+            }
+
+            function handleJoinConfirm() {
+                showStep('step-3');
+            }
+
+            function unlockContent() {
+                localStorage.setItem('proidea_access', 'granted');
+                document.getElementById('gate-overlay').classList.add('hidden');
+            }
+        </script>
+
+    </body>
 </html>
