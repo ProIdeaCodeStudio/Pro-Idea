@@ -80,7 +80,7 @@ body {
   min-height: 100vh;
 }
 .navbar-logo {
-  height: 80px;
+  height: 150px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -199,7 +199,7 @@ a:focus {
   margin: var(--space-2xl) 0;
 }
 
-#services ol {
+#services li {
   gap: var(--space-xl);
   justify-content: center;
   list-style: none;
