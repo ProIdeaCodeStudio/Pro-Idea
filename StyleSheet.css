@@ -196,7 +196,7 @@ a:focus {
 }
 
 .navbar-logo {
-  height: clamp(50px, 8vw, 80px);
+  height: clamp(80px, 8vw, 100px);
   width: auto;
   object-fit: contain;
   display: block;
