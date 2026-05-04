@@ -1,4 +1,4 @@
-html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +43,7 @@ html lang="en">
         <div class="gate-step" id="step-2">
             <div class="whatsapp-box">
                 <p>You're one step away. Join the Pro Idea learning community on WhatsApp to unlock all materials instantly.</p>
-                <a class="whatsapp-link" href="https://chat.whatsapp.com/JhEBwDkfKWgB46dZ3y3ZnK?mode=gi_t" target="_blank">JOIN WHATSAPP GROUP</a>
+                <a class="whatsapp-link" href="#" target="_blank">JOIN WHATSAPP GROUP</a>
             </div>
             <button class="gate-btn gate-btn-outline" onclick="handleJoinConfirm()">I've Joined the Group ✓</button>
             <p class="gate-note">Once you confirm, all resources will be unlocked for you.</p>
@@ -109,64 +109,123 @@ html lang="en">
         </main>
         
         <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('gate-form');
-      const phoneInput = document.getElementById('phone');
-      const emailInput = document.getElementById('email');
-      const submitButton = document.getElementById('submit-btn');
+  const SUPABASE_URL = 'https://euadmjyyjtbbdyjgnoqg.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_a3dhZzlwWPmFD9ixA6VuRg_MZC1X2Nj';
+  const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/JhEBwDkfKWgB46dZ3y3ZnK?mode=gi_t';
+  const REQUEST_TIMEOUT = 5000;
 
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
+  window.onload = function () {
+    if (localStorage.getItem('proidea_access') === 'granted') {
+      document.getElementById('gate-overlay').classList.add('hidden');
+    }
+    // Set WhatsApp link
+    document.querySelector('.whatsapp-link').href = WHATSAPP_GROUP_URL;
+  };
 
-        const phone = phoneInput.value;
-        const email = emailInput.value;
-        let errors = [];
+  function showStep(stepId) {
+    document.querySelectorAll('.gate-step').forEach(s => s.classList.remove('active'));
+    document.getElementById(stepId).classList.add('active');
+  }
 
-        // Validate phone number
-        const phonePattern = /^[0-9]{10}$/;
-        if (!phonePattern.test(phone)) {
-          errors.push('Please enter a valid phone number (10 digits).');
-        }
+  function isValidPhone(phone) {
+    const phoneRegex = /^[\d\s\+\-\(\)]{10,}$/;
+    return phoneRegex.test(phone);
+  }
 
-        // Validate email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-          errors.push('Please enter a valid email address.');
-        }
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
-        if (errors.length > 0) {
-          alert(errors.join('\n')); // Display all errors
-          return;
-        }
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('field-name').value.trim();
+    const email = document.getElementById('field-email').value.trim();
+    const phone = document.getElementById('field-phone').value.trim();
+    const error = document.getElementById('form-error');
+    const submitBtn = document.querySelector('.gate-btn-primary');
 
-        submitButton.disabled = true; // Disable submit button
+    // Validation
+    if (!name || !email || !phone) {
+      error.textContent = 'Please fill in all fields.';
+      error.classList.add('visible');
+      return;
+    }
 
-        // Simulate a request timeout
-        const timeoutPromise = new Promise((_, reject) => {
-          setTimeout(() => {
-            reject(new Error('Request timed out. Please try again later.'));
-          }, 5000); // 5 seconds timeout
-        });
+    if (!isValidEmail(email)) {
+      error.textContent = 'Please enter a valid email.';
+      error.classList.add('visible');
+      return;
+    }
 
-        // Simulate a successful database operation
-        const databasePromise = new Promise((resolve) => {
-          setTimeout(() => {
-            resolve('Success');
-          }, 2000); // Simulating a database success after 2 seconds
-        });
+    if (!isValidPhone(phone)) {
+      error.textContent = 'Please enter a valid phone number (10+ digits).';
+      error.classList.add('visible');
+      return;
+    }
 
-        Promise.race([timeoutPromise, databasePromise])
-          .then((result) => {
-            alert('Form submitted successfully!'); // Display success message
-            console.log(result);
-            // Additional tracking logic can be added here
-          })
-          .catch((error) => {
-            alert(error.message); // Display error message
-          })
-          .finally(() => {
-            submitButton.disabled = false; // Re-enable submit button
-          });
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating Account...';
+    error.classList.remove('visible');
+
+    let savedToDatabase = false;
+
+    // Try to save to Supabase
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ name, email, phone }),
+        signal: controller.signal
       });
-    });
-</script>
+
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        savedToDatabase = true;
+        console.log('✓ Data saved to database');
+      } else {
+        console.error('✗ Database error:', response.status);
+      }
+    } catch (err) {
+      console.error('✗ Error:', err.message);
+    }
+
+    // Always save locally
+    localStorage.setItem('proidea_name', name);
+    localStorage.setItem('proidea_email', email);
+    localStorage.setItem('proidea_phone', phone);
+    localStorage.setItem('proidea_db_saved', savedToDatabase ? 'yes' : 'no');
+
+    // If database failed, mark for retry
+    if (!savedToDatabase) {
+      localStorage.setItem('proidea_pending_sync', JSON.stringify({ name, email, phone }));
+      error.textContent = '⚠️ Saved locally (syncing with server...)';
+      error.classList.add('visible');
+    }
+
+    // Re-enable button and proceed
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Continue →';
+    showStep('step-2');
+  }
+
+  function handleJoinConfirm() {
+    showStep('step-3');
+  }
+
+  function unlockContent() {
+    localStorage.setItem('proidea_access', 'granted');
+    document.getElementById('gate-overlay').classList.add('hidden');
+  }
+          </script>
