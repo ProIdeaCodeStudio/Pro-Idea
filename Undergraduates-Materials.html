@@ -1,167 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Pro Idea - Educational services">
-        <meta name="keywords" content="education, secondary school, students, University, 100 level, 200 level, 300 level, 400 level, 500 level, Pro Idea, educational materials, materials, PDF, pdfs, notes, past questions, answers, solutions">
-        <meta name="author" content="Pro Idea">
-        <title>Pro Idea - Educational Services</title>
-        <link rel="stylesheet" href="StyleSheet.css">
-        <link rel="icon" href="Transparent logo.png" type="image/Brand-icon">
-    </head>
-    <body>
-        <!-- GATE OVERLAY -->
-<div id="gate-overlay">
-    <div class="gate-box">
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('gate-form');
+      const phoneInput = document.getElementById('phone');
+      const emailInput = document.getElementById('email');
+      const submitButton = document.getElementById('submit-btn');
 
-        <div class="gate-label">Pro Idea · Educational Access</div>
-        <div class="gate-title">Unlock Free Resources</div>
-        <div class="gate-subtitle">Join the Pro Idea learning community to access all educational materials for free.</div>
-        <div class="gate-divider"></div>
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-        <!-- STEP 1: Form -->
-        <div class="gate-step active" id="step-1">
-            <form class="gate-form" id="access-form" onsubmit="handleFormSubmit(event)">
-                <div>
-                    <label class="gate-field-label">FULL NAME</label>
-                    <input class="gate-input" type="text" id="field-name" placeholder="Your full name" required>
-                </div>
-                <div>
-                    <label class="gate-field-label">EMAIL ADDRESS</label>
-                    <input class="gate-input" type="email" id="field-email" placeholder="your@email.com" required>
-                </div>
-                <div>
-                    <label class="gate-field-label">PHONE NUMBER</label>
-                    <input class="gate-input" type="tel" id="field-phone" placeholder="+234 xxx xxx xxxx" required>
-                </div>
-                <p class="gate-error" id="form-error">Please fill in all fields correctly.</p>
-                <button class="gate-btn gate-btn-primary" type="submit">Create Account →</button>
-            </form>
-        </div>
+        const phone = phoneInput.value;
+        const email = emailInput.value;
+        let errors = [];
 
-        <!-- STEP 2: WhatsApp -->
-        <div class="gate-step" id="step-2">
-            <div class="whatsapp-box">
-                <p>You're one step away. Join the Pro Idea learning community on WhatsApp to unlock all materials instantly.</p>
-                <a class="whatsapp-link" href="https://chat.whatsapp.com/JhEBwDkfKWgB46dZ3y3ZnK?mode=gi_t" target="_blank">JOIN WHATSAPP GROUP</a>
-            </div>
-            <button class="gate-btn gate-btn-outline" onclick="handleJoinConfirm()">I've Joined the Group ✓</button>
-            <p class="gate-note">Once you confirm, all resources will be unlocked for you.</p>
-        </div>
+        // Validate phone number
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+          errors.push('Please enter a valid phone number (10 digits).');
+        }
 
-        <!-- STEP 3: Success -->
-        <div class="gate-step" id="step-3">
-            <div class="success-icon">🔥</div>
-            <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; color:#DDD0B3; font-weight:300; line-height:1.7; margin-bottom:24px;">
-                Welcome to the Pro Idea community. Your resources are now unlocked. Enjoy the materials!
-            </p>
-            <button class="gate-btn gate-btn-primary" onclick="unlockContent()">Access Resources →</button>
-        </div>
+        // Validate email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          errors.push('Please enter a valid email address.');
+        }
 
-    </div>
-</div>
-        <header id="navbar">
-            <div class="container">
-                <p class="cover-label">Pro Idea</p>
-                <h1 class="cover-wordmark">Educational Services</h1>
-                <p class="cover-tagline">Comprehensive educational resources for students at Undergraduate level.</p>
-            </div>
-        </header>
+        if (errors.length > 0) {
+          alert(errors.join('\n')); // Display all errors
+          return;
+        }
 
-        <main class="container">
-            <section class="section">
-                <p class="section-label">Featured Resources</p>
-                <h2 class="section-title">100 level Resources</h2>
-                <div class="gallery">
-                    <div class="project-card">
-                        <a href="https://drive.google.com/file/d/12UotRidfTnhLCMQEDvTIy7reN2YK4jJr/view?usp=drivesdk" target="_blank">
-                            <div class="project-description">
-                                <p class="project-type">MTS 104</p>
-                                <h3 class="project-title">COMPLETE HANDOUT</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <a href="https://drive.google.com/file/d/12WjPEAOzOS1PzfSXlwyOoX-pJjNlXtEG/view?usp=drivesdk" alt="MTS 104-Vectors-Geometry-1">
-                            <div class="project-description">
-                                <p class="project-type">MTS 104</p>
-                                <h3 class="project-title">Vectors-Geometry-1</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <a href="https://drive.google.com/file/d/12o26O_UGZsqzoXegWx5tX930X38n3IIQ/view?usp=drivesdk" alt="MTS 104 Vector questions">
-                            <div class="project-description">
-                                <p class="project-type">MTS 104</p>
-                                <h3 class="project-title">MTS 104 Vector questions</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <a href="https://drive.google.com/file/d/12epJ-_uvKGgymZH7_X6hmT_jkT6ETUt9/view?usp=drivesdk" alt="MTS 104">
-                            <div class="project-description">
-                                <p class="project-type">MTS 104</p>
-                                <h3 class="project-title">MTS 104</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <a href="https://drive.google.com/file/d/1k12ibep2fi0pwI0ulg1QqCbFEu2Z1z6X/view?usp=drivesdk" alt="MTS 102 - Calculus Integration">
-                            <div class="project-description">
-                                <p class="project-type">MTS 102</p>
-                                <h3 class="project-title">Calculus Integration</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
+        submitButton.disabled = true; // Disable submit button
 
-        <script>
-            // Check if already unlocked on this device
-            window.onload = function () {
-                if (localStorage.getItem('proidea_access') === 'granted') {
-                    document.getElementById('gate-overlay').classList.add('hidden');
-                }
-            };
+        // Simulate a request timeout
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => {
+            reject(new Error('Request timed out. Please try again later.'));
+          }, 5000); // 5 seconds timeout
+        });
 
-            function showStep(stepId) {
-                document.querySelectorAll('.gate-step').forEach(s => s.classList.remove('active'));
-                document.getElementById(stepId).classList.add('active');
-            }
+        // Simulate a successful database operation
+        const databasePromise = new Promise((resolve) => {
+          setTimeout(() => {
+            resolve('Success');
+          }, 2000); // Simulating a database success after 2 seconds
+        });
 
-            function handleFormSubmit(e) {
-                e.preventDefault();
-                const name = document.getElementById('field-name').value.trim();
-                const email = document.getElementById('field-email').value.trim();
-                const phone = document.getElementById('field-phone').value.trim();
-                const error = document.getElementById('form-error');
-
-                if (!name || !email || !phone) {
-                    error.classList.add('visible');
-                    return;
-                }
-
-                error.classList.remove('visible');
-
-                // Store details locally
-                localStorage.setItem('proidea_name', name);
-                localStorage.setItem('proidea_email', email);
-                localStorage.setItem('proidea_phone', phone);
-
-                showStep('step-2');
-            }
-
-            function handleJoinConfirm() {
-                showStep('step-3');
-            }
-
-            function unlockContent() {
-                localStorage.setItem('proidea_access', 'granted');
-                document.getElementById('gate-overlay').classList.add('hidden');
-            }
-        </script>
-
-    </body>
-</html>
+        Promise.race([timeoutPromise, databasePromise])
+          .then((result) => {
+            alert('Form submitted successfully!'); // Display success message
+            console.log(result);
+            // Additional tracking logic can be added here
+          })
+          .catch((error) => {
+            alert(error.message); // Display error message
+          })
+          .finally(() => {
+            submitButton.disabled = false; // Re-enable submit button
+          });
+      });
+    });
+</script>
