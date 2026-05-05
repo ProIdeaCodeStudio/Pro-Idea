@@ -119,8 +119,33 @@
     if (localStorage.getItem('proidea_access') === 'granted') {
       document.getElementById('gate-overlay').classList.add('hidden');
     }
-    // Set WhatsApp link
     document.querySelector('.whatsapp-link').href = WHATSAPP_GROUP_URL;
+
+    // Retry failed database save
+    const pending = localStorage.getItem('proidea_pending_sync');
+    if (pending) {
+      const data = JSON.parse(pending);
+      fetch(`${SUPABASE_URL}/rest/v1/form_submissions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          "Name": data.name,
+          "E-mail": data.email,
+          "Phone No.": data.phone
+        })
+      }).then(res => {
+        if (res.ok) {
+          localStorage.removeItem('proidea_pending_sync');
+          localStorage.setItem('proidea_db_saved', 'yes');
+          console.log('✓ Pending data synced successfully');
+        }
+      }).catch(err => console.error('✗ Retry failed:', err.message));
+    }
   };
 
   function showStep(stepId) {
@@ -140,14 +165,13 @@
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const name = document.getElementById('field-name').value.trim();
     const email = document.getElementById('field-email').value.trim();
     const phone = document.getElementById('field-phone').value.trim();
     const error = document.getElementById('form-error');
     const submitBtn = document.querySelector('.gate-btn-primary');
 
-    // Validation
     if (!name || !email || !phone) {
       error.textContent = 'Please fill in all fields.';
       error.classList.add('visible');
@@ -166,14 +190,12 @@
       return;
     }
 
-    // Show loading state
     submitBtn.disabled = true;
     submitBtn.textContent = 'Creating Account...';
     error.classList.remove('visible');
 
     let savedToDatabase = false;
 
-    // Try to save to Supabase
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
@@ -186,7 +208,11 @@
           'Authorization': `Bearer ${SUPABASE_KEY}`,
           'Prefer': 'return=minimal'
         },
-        body: JSON.stringify({ name, email, phone }),
+        body: JSON.stringify({
+          "Name": name,
+          "E-mail": email,
+          "Phone No.": phone
+        }),
         signal: controller.signal
       });
 
@@ -202,22 +228,23 @@
       console.error('✗ Error:', err.message);
     }
 
-    // Always save locally
     localStorage.setItem('proidea_name', name);
     localStorage.setItem('proidea_email', email);
     localStorage.setItem('proidea_phone', phone);
     localStorage.setItem('proidea_db_saved', savedToDatabase ? 'yes' : 'no');
 
-    // If database failed, mark for retry
     if (!savedToDatabase) {
-      localStorage.setItem('proidea_pending_sync', JSON.stringify({ name, email, phone }));
+      localStorage.setItem('proidea_pending_sync', JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone
+      }));
       error.textContent = '⚠️ Saved locally (syncing with server...)';
       error.classList.add('visible');
     }
 
-    // Re-enable button and proceed
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Continue →';
+    submitBtn.textContent = 'Create Account →';
     showStep('step-2');
   }
 
@@ -229,4 +256,4 @@
     localStorage.setItem('proidea_access', 'granted');
     document.getElementById('gate-overlay').classList.add('hidden');
   }
-          </script>
+</script>
