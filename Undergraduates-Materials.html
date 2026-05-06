@@ -225,7 +225,9 @@
         console.error('✗ Database error:', response.status);
       }
     } catch (err) {
-      console.error('✗ Error:', err.message);
+      console.error('✗ Database error:', response.status);
+error.textContent = '✗ Error: ' + response.status;
+error.classList.add('visible');
     }
 
     localStorage.setItem('proidea_name', name);
