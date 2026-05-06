@@ -126,14 +126,35 @@
   const GROUP_CODE = 'PI2526';
   const REQUEST_TIMEOUT = 5000;
 
-  window.onload = function () {
+  window.onload = async function () {
     emailjs.init(EMAILJS_PUBLIC_KEY);
 
+    document.querySelector('.whatsapp-link').href = WHATSAPP_GROUP_URL;
+
+    // Force re-verification for unverified accounts
+    const savedEmail = localStorage.getItem('proidea_email');
+    if (savedEmail && localStorage.getItem('proidea_access') === 'granted') {
+      try {
+        const checkResponse = await fetch(
+          `${SUPABASE_URL}/rest/v1/Form%20Submissions?E-mail=eq.${encodeURIComponent(savedEmail)}&select=Verified`, {
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`
+          }
+        });
+        const data = await checkResponse.json();
+        if (data.length > 0 && data[0].Verified === false) {
+          localStorage.removeItem('proidea_access');
+        }
+      } catch (err) {
+        console.error('✗ Verification check failed:', err.message);
+      }
+    }
+
+    // Now check access after potential removal
     if (localStorage.getItem('proidea_access') === 'granted') {
       document.getElementById('gate-overlay').classList.add('hidden');
     }
-
-    document.querySelector('.whatsapp-link').href = WHATSAPP_GROUP_URL;
 
     // Retry failed database save
     const pending = localStorage.getItem('proidea_pending_sync');
@@ -162,7 +183,6 @@
       }).catch(err => console.error('✗ Retry failed:', err.message));
     }
   };
-
   function showStep(stepId) {
     document.querySelectorAll('.gate-step').forEach(s => s.classList.remove('active'));
     document.getElementById(stepId).classList.add('active');
