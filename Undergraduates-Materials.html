@@ -161,7 +161,8 @@
         if (data.length > 0 && data[0].Verified === false) {
           localStorage.removeItem('proidea_access');
         }
-      } catch (err) {
+      } 
+      catch (err) {
         console.error('✗ Verification check failed:', err.message);
       }
     }
@@ -360,7 +361,34 @@ if (localStorage.getItem('proidea_access') === 'granted') {
       return;
     }
     
-    async function handleLogin() {
+    error.classList.remove('visible');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Verifying...';
+
+    // Mark as verified in Supabase
+    const email = localStorage.getItem('proidea_email');
+    try {
+      await fetch(
+        `${SUPABASE_URL}/rest/v1/Form%20Submissions?E-mail=eq.${encodeURIComponent(email)}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ "Verified": true })
+      });
+      console.log('✓ Verified in database');
+    } catch (err) {
+      console.error('✗ Verification update failed:', err.message);
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Verify →';
+    showStep('step-3');
+  }
+  async function handleLogin() {
     const email = document.getElementById('login-email').value.trim();
     const error = document.getElementById('login-error');
     const loginBtn = document.querySelector('#step-4 .gate-btn-primary');
@@ -421,34 +449,6 @@ if (localStorage.getItem('proidea_access') === 'granted') {
         loginBtn.textContent = 'Login →';
     }
 }
-
-    error.classList.remove('visible');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Verifying...';
-
-    // Mark as verified in Supabase
-    const email = localStorage.getItem('proidea_email');
-    try {
-      await fetch(
-        `${SUPABASE_URL}/rest/v1/Form%20Submissions?E-mail=eq.${encodeURIComponent(email)}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({ "Verified": true })
-      });
-      console.log('✓ Verified in database');
-    } catch (err) {
-      console.error('✗ Verification update failed:', err.message);
-    }
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Verify →';
-    showStep('step-3');
-  }
 
   function unlockContent() {
     localStorage.setItem('proidea_access', 'granted');
