@@ -65,6 +65,21 @@
             </p>
             <button class="gate-btn gate-btn-primary" onclick="unlockContent()">Access Resources →</button>
         </div>
+        <!-- STEP 4: Login -->
+<div class="gate-step" id="step-4">
+    <div class="gate-label">Welcome Back!</div>
+    <div class="gate-subtitle">Login to access your resources.</div>
+    <div class="gate-divider"></div>
+    <div class="gate-form">
+        <div>
+            <label class="gate-field-label">EMAIL ADDRESS</label>
+            <input class="gate-input" type="email" id="login-email" placeholder="your@email.com">
+        </div>
+        <p class="gate-error" id="login-error"></p>
+        <button class="gate-btn gate-btn-primary" onclick="handleLogin()">Login →</button>
+        <button class="gate-btn gate-btn-outline" onclick="showStep('step-1')" style="margin-top:8px;">Create New Account</button>
+    </div>
+</div>
 
     </div>
 </div>
@@ -151,10 +166,13 @@
       }
     }
 
-    // Now check access after potential removal
-    if (localStorage.getItem('proidea_access') === 'granted') {
-      document.getElementById('gate-overlay').classList.add('hidden');
-    }
+   // Check access
+if (localStorage.getItem('proidea_access') === 'granted') {
+    // Show login instead of direct access
+    showStep('step-4');
+} else {
+    showStep('step-1');
+}
 
     // Retry failed database save
     const pending = localStorage.getItem('proidea_pending_sync');
@@ -341,6 +359,68 @@
       error.classList.add('visible');
       return;
     }
+    
+    async function handleLogin() {
+    const email = document.getElementById('login-email').value.trim();
+    const error = document.getElementById('login-error');
+    const loginBtn = document.querySelector('#step-4 .gate-btn-primary');
+
+    if (!email) {
+        error.textContent = 'Please enter your email.';
+        error.classList.add('visible');
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        error.textContent = 'Please enter a valid email.';
+        error.classList.add('visible');
+        return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Checking...';
+    error.classList.remove('visible');
+
+    try {
+        const checkResponse = await fetch(
+            `${SUPABASE_URL}/rest/v1/Form%20Submissions?E-mail=eq.${encodeURIComponent(email)}&select=Verified`, {
+            headers: {
+                'apikey': SUPABASE_KEY,
+                'Authorization': `Bearer ${SUPABASE_KEY}`
+            }
+        });
+
+        const data = await checkResponse.json();
+
+        if (data.length === 0) {
+            // Email not found
+            error.textContent = 'Email not found. Please create an account.';
+            error.classList.add('visible');
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Login →';
+            return;
+        }
+
+        if (data[0].Verified === true) {
+            // Verified — grant access
+            localStorage.setItem('proidea_access', 'granted');
+            localStorage.setItem('proidea_email', email);
+            document.getElementById('gate-overlay').classList.add('hidden');
+        } else {
+            // Not verified — send to code step
+            localStorage.setItem('proidea_email', email);
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Login →';
+            showStep('step-2');
+        }
+
+    } catch (err) {
+        error.textContent = '✗ Error: ' + err.message;
+        error.classList.add('visible');
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Login →';
+    }
+}
 
     error.classList.remove('visible');
     submitBtn.disabled = true;
