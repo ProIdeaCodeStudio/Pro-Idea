@@ -9,6 +9,7 @@
         <title>Pro Idea - Educational Services</title>
         <link rel="stylesheet" href="StyleSheet.css">
         <link rel="icon" href="Transparent logo.png" type="image/Brand-icon">
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     </head>
     <body>
         <!-- GATE OVERLAY -->
@@ -110,12 +111,16 @@
         </main>
         
         <script>
+  const EMAILJS_SERVICE_ID = 'service_ugbnb2d';
+  const EMAILJS_TEMPLATE_ID = 'template_i3betj5';
+  const EMAILJS_PUBLIC_KEY = '3Do3--5-daxIAi1jF';
   const SUPABASE_URL = 'https://euadmjyyjtbbdyjgnoqg.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_a3dhZzlwWPmFD9ixA6VuRg_MZC1X2Nj';
   const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/JhEBwDkfKWgB46dZ3y3ZnK?mode=gi_t';
   const REQUEST_TIMEOUT = 5000;
 
   window.onload = function () {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
     if (localStorage.getItem('proidea_access') === 'granted') {
       document.getElementById('gate-overlay').classList.add('hidden');
     }
@@ -220,6 +225,16 @@
 
   if (response.ok) {
     savedToDatabase = true;
+      // Send email notification
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    from_name: name,
+    from_email: email,
+    phone: phone
+}).then(() => {
+  console.log('✓ Email notification sent');
+}).catch(err => {
+  console.error('✗ Email failed:', err);
+});
     error.textContent = '✓ Saved to database!';
     error.classList.add('visible');
   } else {
