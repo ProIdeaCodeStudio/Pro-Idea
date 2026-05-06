@@ -197,39 +197,40 @@
     let savedToDatabase = false;
 
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({
-          "Name": name,
-          "E-mail": email,
-          "Phone No.": phone
-        }),
-        signal: controller.signal
-      });
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      "Name": name,
+      "E-mail": email,
+      "Phone No.": phone
+    }),
+    signal: controller.signal
+  });
 
-      clearTimeout(timeoutId);
+  clearTimeout(timeoutId);
 
-      if (response.ok) {
-        savedToDatabase = true;
-        console.log('✓ Data saved to database');
-      } else {
-        console.error('✗ Database error:', response.status);
-      }
-    } catch (err) {
-      console.error('✗ Database error:', response.status);
-error.textContent = '✗ Error: ' + response.status;
-error.classList.add('visible');
-    }
-
+  if (response.ok) {
+    savedToDatabase = true;
+    error.textContent = '✓ Saved to database!';
+    error.classList.add('visible');
+  } else {
+    const responseText = await response.text();
+    error.textContent = '✗ DB Error ' + response.status + ': ' + responseText;
+    error.classList.add('visible');
+  }
+} catch (err) {
+  error.textContent = '✗ Catch: ' + err.message;
+  error.classList.add('visible');
+}
     localStorage.setItem('proidea_name', name);
     localStorage.setItem('proidea_email', email);
     localStorage.setItem('proidea_phone', phone);
