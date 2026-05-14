@@ -23,6 +23,9 @@
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
         </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
@@ -129,9 +132,9 @@
       </div>
       <div class="work-grid">
 
-        <div class="work-card">
+        <div class="work-card reveal">
           <div class="work-image-wrap">
-            <img src="Graphics/The-Mountain-Experience.png" alt="The Mountain Experience event poster design">
+            <img src="Graphics/The-Mountain-Experience.png" alt="The Mountain Experience event poster design" loading="lazy">
           </div>
           <div class="work-info">
             <p class="work-type">Poster Design</p>
@@ -140,9 +143,9 @@
           </div>
         </div>
 
-        <div class="work-card">
+        <div class="work-card reveal">
           <div class="work-image-wrap">
-            <img src="Graphics/PAPA-D.png" alt="PAPA D wordmark logo design">
+            <img src="Graphics/PAPA-D.png" alt="PAPA D wordmark logo design" loading="lazy">
           </div>
           <div class="work-info">
             <p class="work-type">Brand Identity</p>
@@ -151,9 +154,9 @@
           </div>
         </div>
 
-        <div class="work-card">
+        <div class="work-card reveal">
           <div class="work-image-wrap">
-            <img src="Graphics/Easter.png" alt="Easter flyer design">
+            <img src="Graphics/Easter.png" alt="Easter flyer design" loading="lazy">
           </div>
           <div class="work-info">
             <p class="work-type">Flyer Design</p>
@@ -216,6 +219,66 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // ── HAMBURGER MENU ──────────────────────────────────────
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks  = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+
+    // ── ACTIVE NAV INDICATOR ────────────────────────────────
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const activateNav = () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      navAnchors.forEach(a => {
+        a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
+      });
+    };
+
+    window.addEventListener('scroll', activateNav);
+    activateNav();
+
+
+    // ── LAZY LOAD FADE-IN ───────────────────────────────────
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      if (img.complete) {
+        img.classList.add('img-loaded');
+      } else {
+        img.addEventListener('load', () => img.classList.add('img-loaded'));
+      }
+    });
+
+
+    // ── SCROLL REVEAL ───────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
 
 </body>
 </html>
