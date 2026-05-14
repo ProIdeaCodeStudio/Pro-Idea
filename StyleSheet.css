@@ -332,7 +332,7 @@ section {
   border-left: var(--border-amber);
 }
 
-.stat-item { }
+/*.stat-item { }*/
 
 .stat-number {
   font-family: var(--font-display);
@@ -496,7 +496,7 @@ section {
   gap: var(--space-lg);
 }
 
-.contact-item { }
+/*.contact-item { }*/
 
 .contact-label {
   font-family: var(--font-label);
@@ -516,7 +516,10 @@ section {
 }
 
 .contact-link:hover { color: var(--amber); }
-.cta-section { text-align: center; }
+.cta-section {
+   text-align: center;
+   font-size: var(--text-lg);
+}
 
 
 /* ── FOOTER ──────────────────────────────────────────────── */
