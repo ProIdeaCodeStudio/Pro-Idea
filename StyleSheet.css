@@ -516,6 +516,7 @@ section {
 }
 
 .contact-link:hover { color: var(--amber); }
+.cta-section { text-align: center; }
 
 
 /* ── FOOTER ──────────────────────────────────────────────── */
