@@ -160,14 +160,70 @@
     });
 
 
-    // ── LAZY LOAD FADE-IN ───────────────────────────────────
-    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-      if (img.complete) {
-        img.classList.add('img-loaded');
+    // ── IMAGE LOADING INDICATORS ────────────────────────────
+    const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+
+    lazyImgs.forEach(img => {
+      const wrap = img.closest('.work-image-wrap');
+      if (wrap) {
+        const indicator = document.createElement('span');
+        indicator.className = 'img-loading-indicator';
+        indicator.textContent = 'Loading...';
+        wrap.appendChild(indicator);
+
+        const hideIndicator = () => {
+          indicator.style.display = 'none';
+          img.classList.add('img-loaded');
+        };
+
+        if (img.complete && img.naturalWidth > 0) {
+          hideIndicator();
+        } else {
+          img.addEventListener('load',  hideIndicator);
+          img.addEventListener('error', hideIndicator);
+        }
       } else {
-        img.addEventListener('load', () => img.classList.add('img-loaded'));
+        if (img.complete) {
+          img.classList.add('img-loaded');
+        } else {
+          img.addEventListener('load', () => img.classList.add('img-loaded'));
+        }
       }
     });
+
+
+    // ── NETWORK SPEED BANNER ────────────────────────────────
+    const banner = document.createElement('div');
+    banner.id = 'network-banner';
+    banner.textContent = 'Slow connection detected — images may take a moment to load';
+    document.body.appendChild(banner);
+
+    const showBanner = () => {
+      banner.classList.add('banner-visible');
+      setTimeout(() => {
+        banner.classList.add('banner-top');
+      }, 5000);
+    };
+
+    const checkNetwork = () => {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const isSlowByAPI = connection &&
+        (connection.effectiveType === '2g' ||
+         connection.effectiveType === 'slow-2g' ||
+         connection.saveData === true);
+
+      if (isSlowByAPI) {
+        showBanner();
+        return;
+      }
+
+      setTimeout(() => {
+        const anyUnloaded = [...lazyImgs].some(img => !img.classList.contains('img-loaded'));
+        if (anyUnloaded) showBanner();
+      }, 10000);
+    };
+
+    checkNetwork();
 
 
     // ── SCROLL REVEAL ───────────────────────────────────────
