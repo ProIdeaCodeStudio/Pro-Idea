@@ -171,7 +171,7 @@ address { font-style: normal; }
 
 
 /* ── NETWORK SPEED BANNER ────────────────────────────────── */
-#network-banner {
+/*#network-banner {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -205,7 +205,7 @@ address { font-style: normal; }
   font-size: var(--text-label);
   padding: var(--space-sm) var(--space-md);
 }
-
+*/
 
 /* ── IMAGE LOADING INDICATOR ─────────────────────────────── */
 .img-loading-indicator {
