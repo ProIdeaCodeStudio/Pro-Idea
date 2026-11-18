@@ -101,7 +101,7 @@ button { font: inherit; }
 .project-card { display: block; min-width: 0; }
 .project-image { height: clamp(240px, 31vw, 390px); overflow: hidden; background: #e4e3dd; }
 .project-feature .project-image { height: clamp(320px, 43vw, 550px); }
-.project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+.project-image img { width: 100%; height: 100%; object-fit: contain; padding: 14px; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
 .project-card:hover .project-image img { transform: scale(1.035); }
 .project-meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 17px; color: var(--muted); font: 9px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
 .project-meta span:last-child { color: var(--blue); }
