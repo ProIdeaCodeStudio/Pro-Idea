@@ -782,3 +782,97 @@ section {
     align-items: flex-start;
   }
 }
+
+/* ── MULTIDISCIPLINARY PORTFOLIO ───────────────────────── */
+#disciplines { background: var(--ash); }
+
+.discipline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.discipline-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  padding: var(--space-lg);
+  background: var(--deep-ink);
+  border: var(--border-thin);
+  border-top: 2px solid var(--amber);
+  transition: var(--transition);
+}
+
+.discipline-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--amber);
+}
+
+.discipline-number {
+  margin-bottom: var(--space-lg);
+  color: var(--ember-fog);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  letter-spacing: 2px;
+}
+
+.discipline-card h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--warm-white);
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+}
+
+.discipline-card > p:not(.discipline-number) {
+  margin-bottom: var(--space-lg);
+  color: var(--parchment);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+.discipline-link {
+  margin-top: auto;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.discipline-link span { padding-left: 5px; }
+
+.electrical-note {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  border-left: 2px solid var(--amber);
+  background: rgba(17, 16, 8, 0.55);
+}
+
+.electrical-note h3 {
+  margin: var(--space-sm) 0;
+  color: var(--warm-white);
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+}
+
+.electrical-note > p:last-child {
+  max-width: 760px;
+  color: var(--parchment);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .discipline-grid { grid-template-columns: 1fr 1fr; }
+  .discipline-card:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  .discipline-grid { grid-template-columns: 1fr; }
+  .discipline-card:last-child { grid-column: auto; }
+  .discipline-card { min-height: 250px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
