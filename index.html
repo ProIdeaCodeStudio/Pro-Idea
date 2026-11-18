@@ -3,339 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pro Idea portfolio showcasing graphic design, web development and practical domestic electrical installation experience. From Idea to Impact.">
-  <meta name="keywords" content="Pro Idea, graphic design, brand identity, web development, electrical installation, Nigeria">
-  <meta name="author" content="Pro Idea">
-  <title>Pro Idea — From Idea to Impact</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+  <meta name="description" content="Portfolio of Promise Olutola — graphic design, web development and electrical engineering learning. Selected work, projects and experience.">
+  <meta name="theme-color" content="#f4f3ef">
+  <meta name="author" content="Promise Olutola">
+  <title>Promise Olutola — Designer, Developer & Engineering Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="StyleSheet.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ── NAVBAR ─────────────────────────────────────────── -->
-  <nav id="navbar">
-    <div class="container">
-      <div class="nav-inner">
-        <img class="navbar-logo" src="Full Logo mark-transparent.png" alt="Pro Idea Logo">
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#disciplines">Disciplines</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+  <header class="site-header">
+    <div class="site-shell nav-wrap">
+      <a class="wordmark" href="#top" aria-label="Promise Olutola home">promise<span>.</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#work">Selected work</a>
+        <a href="#disciplines">What I do</a>
+        <a href="#about">About</a>
+        <a class="nav-contact" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-
-  <!-- ── HERO ──────────────────────────────────────────── -->
-  <section id="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <p class="cover-label">DESIGN · TECHNOLOGY · ENGINEERING · NIGERIA</p>
-        <h1 class="cover-wordmark">Pro <span>Idea</span></h1>
-        <p class="cover-tagline">"From Idea to Impact."</p>
-        <div class="amber-line"></div>
-        <p class="hero-copy">A multidisciplinary portfolio bringing together creative design, digital development, engineering education and practical technical experience.</p>
-        <div class="hero-actions">
-          <a href="#disciplines" class="cta-button">Explore My Disciplines →</a>
-          <a href="#contact" class="cta-button-outline">Get in Touch</a>
+  <main id="main">
+    <section class="hero section-pad" id="top">
+      <div class="site-shell">
+        <div class="hero-topline">
+          <span class="eyebrow"><span class="status-dot"></span> Independent creative practice</span>
+          <span class="eyebrow">Based in Nigeria · Open to opportunities</span>
+        </div>
+        <div class="hero-layout">
+          <div class="hero-main">
+            <p class="hero-kicker">DESIGN / DIGITAL / ENGINEERING</p>
+            <h1>I turn ideas into <em>things</em> people can see, use and experience.</h1>
+            <p class="hero-intro">I'm Promise Olutola — a graphic designer, web development learner and Electrical/Electronics Engineering student at FUTA. I work across visual identity, digital experiences and practical technical learning.</p>
+            <div class="hero-links">
+              <a class="button button-dark" href="#work">Explore selected work <span aria-hidden="true">↘</span></a>
+              <a class="text-link" href="#about">A little about me <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <aside class="hero-index" aria-label="Portfolio disciplines">
+            <div class="index-heading"><span>01 — 03</span><span>Areas of focus</span></div>
+            <a href="#discipline-design"><span class="index-number">01</span><span class="index-name">Visual design</span><span class="index-arrow">↗</span></a>
+            <a href="#discipline-web"><span class="index-number">02</span><span class="index-name">Web development</span><span class="index-arrow">↗</span></a>
+            <a href="#discipline-electrical"><span class="index-number">03</span><span class="index-name">Electrical practice</span><span class="index-arrow">↗</span></a>
+            <div class="index-foot">Curiosity across disciplines.<br>Clarity in every detail.</div>
+          </aside>
+        </div>
+        <div class="hero-bottomline">
+          <span>PORTFOLIO — 2026</span>
+          <span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span>
         </div>
       </div>
+    </section>
 
-      <!-- Ghost typography background element -->
-      <div class="ghost-type" aria-hidden="true">PI</div>
-    </div>
-  </section>
-
-
-  <!-- ── ABOUT ──────────────────────────────────────────── -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">01 — About</p>
-        <h2 class="section-title">Ideas Into<br>Practical Impact.</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>I am <strong>Promise Olutola</strong>, a graphic designer and brand identity practitioner, web development learner, and Electrical/Electronics Engineering student at the Federal University of Technology, Akure.</p>
-          <p>My work brings together <strong>visual communication</strong>, <strong>digital creation</strong> and <strong>practical technical learning</strong>. Through Pro Idea, I develop brand identities and design materials; I also build websites and continue developing my engineering skills through academic study and practical training.</p>
-          <div class="about-amber-bar"></div>
-          <p>My electrical experience includes training in Electrical Installation, Maintenance and Repair at Momas TVET Centre for Electro-Technology. I describe this experience within my actual training and practical competence.</p><p class="about-tagline">"From Idea to Impact."</p>
+    <section class="disciplines section-pad" id="disciplines">
+      <div class="site-shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / What I do</p><h2>Three directions.<br><em>One point of view.</em></h2></div>
+          <p class="section-aside">A multidisciplinary path shaped by creative work, digital experimentation and engineering education.</p>
         </div>
-        <div class="about-stats">
-          <div class="stat-item">
-            <div class="stat-number">03</div>
-            <div class="stat-label">Areas of Practice</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">FUTA</div>
-            <div class="stat-label">Engineering Education</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">2026</div>
-            <div class="stat-label">Continuous Learning</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-
-  <!-- ── DISCIPLINES ───────────────────────────────────── -->
-  <section id="disciplines">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">02 — Disciplines</p>
-        <h2 class="section-title">Different Skills.<br>One Curious Mind.</h2>
-      </div>
-      <div class="discipline-grid">
-        <article class="discipline-card">
-          <p class="discipline-number">01 / CREATIVE</p>
-          <h3>Graphic Design</h3>
-          <p>Brand identity, logo design, promotional materials and visual communication built around clear ideas and consistent design systems.</p>
-          <a href="Gallery.html" class="discipline-link">Explore Graphic Design <span aria-hidden="true">→</span></a>
+        <article class="discipline-row" id="discipline-design">
+          <div class="discipline-id">01</div>
+          <div class="discipline-title"><p class="eyebrow">Visual communication</p><h3>Graphic design<br>& brand identity</h3></div>
+          <p class="discipline-description">Identity systems, logo design, campaign graphics and promotional materials built to communicate with purpose and consistency.</p>
+          <a class="round-link" href="Gallery.html" aria-label="Explore graphic design portfolio">↗</a>
         </article>
-        <article class="discipline-card">
-          <p class="discipline-number">02 / DIGITAL</p>
-          <h3>Web Development</h3>
-          <p>Responsive websites and front-end projects developed with HTML, CSS and JavaScript, including the Pro Idea and Clariva websites.</p>
-          <a href="https://proideacodestudio.github.io/Clariva/" target="_blank" rel="noopener noreferrer" class="discipline-link">Explore a Web Project <span aria-hidden="true">→</span></a>
+        <article class="discipline-row" id="discipline-web">
+          <div class="discipline-id">02</div>
+          <div class="discipline-title"><p class="eyebrow">Digital experiences</p><h3>Web design<br>& development</h3></div>
+          <p class="discipline-description">Responsive websites and front-end experiments using HTML, CSS and JavaScript. Current projects include this portfolio and Clariva.</p>
+          <a class="round-link" href="https://proideacodestudio.github.io/Clariva/" target="_blank" rel="noopener noreferrer" aria-label="Explore Clariva website">↗</a>
         </article>
-        <article class="discipline-card">
-          <p class="discipline-number">03 / TECHNICAL</p>
-          <h3>Electrical Installation</h3>
-          <p>Basic domestic electrical installation, maintenance and repairs, informed by Momas TVET training and practical learning.</p>
-          <a href="#electrical-experience" class="discipline-link">View Training &amp; Experience <span aria-hidden="true">→</span></a>
+        <article class="discipline-row" id="discipline-electrical">
+          <div class="discipline-id">03</div>
+          <div class="discipline-title"><p class="eyebrow">Engineering & technical learning</p><h3>Electrical installation<br>& maintenance</h3></div>
+          <p class="discipline-description">Foundational domestic installation, maintenance and repair knowledge developed through structured training and practical learning.</p>
+          <a class="round-link" href="#electrical-training" aria-label="Read about electrical training">↘</a>
         </article>
       </div>
-      <div class="electrical-note" id="electrical-experience">
-        <p class="section-label">ELECTRICAL TRAINING &amp; EXPERIENCE</p>
-        <h3>Learning through practical work.</h3>
-        <p>Training in Electrical Installation, Maintenance and Repair at Momas TVET Centre for Electro-Technology. This section will be expanded with verified practical project photographs and descriptions as they are documented.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── SELECTED WORK ──────────────────────────────────── -->
-  <section id="work">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">03 — Selected Work</p>
-        <h2 class="section-title">Recent Projects.</h2>
-      </div>
-      <div class="work-grid">
-
-        <div class="work-card reveal">
-          <div class="work-image-wrap">
-            <img src="Graphics/The-Mountain-Experience.png" alt="The Mountain Experience event poster design" loading="lazy">
-          </div>
-          <div class="work-info">
-            <p class="work-type">Poster Design</p>
-            <h3 class="work-title">The Mountain Experience</h3>
-            <p class="work-copy">A cinematic event poster for a gospel gathering in Abuja — dark, dramatic, and designed to command attention.</p>
-          </div>
+    <section class="work section-pad" id="work">
+      <div class="site-shell">
+        <div class="section-heading work-heading">
+          <div><p class="eyebrow">02 / Selected work</p><h2>A closer look at<br><em>what I've made.</em></h2></div>
+          <a class="text-link" href="Gallery.html">View the full design gallery <span aria-hidden="true">↗</span></a>
         </div>
 
-        <div class="work-card reveal">
-          <div class="work-image-wrap">
-            <img src="Graphics/PAPA-D.png" alt="PAPA D wordmark logo design" loading="lazy">
-          </div>
-          <div class="work-info">
-            <p class="work-type">Brand Identity</p>
-            <h3 class="work-title">PAPA D</h3>
-            <p class="work-copy">A refined wordmark concept blending bold typography with Ember-inspired colour — strategic, clean, and timeless.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-image-wrap">
-            <img src="Graphics/Easter.png" alt="Easter flyer design" loading="lazy">
-          </div>
-          <div class="work-info">
-            <p class="work-type">Flyer Design</p>
-            <h3 class="work-title">Easter Celebration</h3>
-            <p class="work-copy">A bold visual concept designed to capture audience attention while maintaining brand consistency and emotional warmth.</p>
-          </div>
-        </div>
-
-      </div>
-      <div class="work-cta">
-        <a href="Gallery.html" class="cta-button">View Full Portfolio →</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── CONTACT ────────────────────────────────────────── -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <div class="contact-text">
-          <p class="section-label">04 — Contact</p>
-          <h2 class="section-title">Let's Build<br>Something.</h2>
-          <p class="contact-copy">Have a design, website or practical electrical enquiry? Get in touch and tell me what you have in mind. We can discuss the scope and appropriate next steps.</p>
-        </div>
-        <div class="contact-details">
-          <div class="contact-item">
-            <p class="contact-label">WhatsApp</p>
-            <a href="https://wa.me/2349133240600" class="contact-link">+234 913 324 0600</a>
-          </div>
-          <div class="contact-item">
-            <p class="contact-label">Email</p>
-            <a href="mailto:Proidea2025@gmail.com?subject=Project%20Inquiry&body=Hello%2C%20I%20have%20a%20project%20I'd%20like%20to%20discuss." class="contact-link">Proidea2025@gmail.com</a>
-          </div>
+        <div class="project-grid">
+          <a class="project-card project-feature" href="Gallery.html">
+            <div class="project-image image-tall"><img src="Graphics/The-Mountain-Experience.png" alt="The Mountain Experience event poster design" loading="lazy"></div>
+            <div class="project-meta"><span>01 / Poster design</span><span>View project ↗</span></div>
+            <h3>The Mountain Experience</h3>
+            <p>Event campaign artwork · Visual storytelling</p>
+          </a>
+          <a class="project-card" href="Gallery.html">
+            <div class="project-image"><img src="Graphics/PAPA-D.png" alt="PAPA D wordmark identity concept" loading="lazy"></div>
+            <div class="project-meta"><span>02 / Identity concept</span><span>View project ↗</span></div>
+            <h3>PAPA D</h3>
+            <p>Wordmark exploration · Brand identity</p>
+          </a>
+          <a class="project-card" href="Gallery.html">
+            <div class="project-image"><img src="Graphics/Easter.png" alt="Easter celebration promotional design" loading="lazy"></div>
+            <div class="project-meta"><span>03 / Campaign graphic</span><span>View project ↗</span></div>
+            <h3>Easter Celebration</h3>
+            <p>Promotional design · Art direction</p>
+          </a>
+          <a class="project-card project-web" href="https://proideacodestudio.github.io/Clariva/" target="_blank" rel="noopener noreferrer">
+            <div class="web-preview" aria-hidden="true"><span class="preview-label">LIVE WEB PROJECT</span><strong>Clariva<span>.</span></strong><small>Learning, organised.</small><div class="preview-window"><i></i><i></i><i></i><b></b><b></b><b></b></div></div>
+            <div class="project-meta"><span>04 / Web project</span><span>Visit website ↗</span></div>
+            <h3>Clariva</h3>
+            <p>Independent web project · Front-end development</p>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- ── FOOTER ─────────────────────────────────────────── -->
-  <footer id="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div id="brand">
-          <p class="type-sample-body">Pro Idea</p>
-          <p class="type-sample-accent">From Idea to Impact.</p>
+    <section class="training section-pad" id="electrical-training">
+      <div class="site-shell training-layout">
+        <div class="training-heading"><p class="eyebrow">03 / Technical foundation</p><h2>Learning by<br><em>understanding how things work.</em></h2></div>
+        <div class="training-copy">
+          <p class="training-lead">Electrical Installation, Maintenance and Repair</p>
+          <p>Training at Momas TVET Centre for Electro-Technology, alongside my Electrical/Electronics Engineering studies at the Federal University of Technology, Akure.</p>
+          <p>My current portfolio scope is foundational domestic electrical knowledge and supervised practical learning. I am continuing to build competence and will add documented projects as they are ready to be presented.</p>
+          <div class="training-tags"><span>FUTA</span><span>MOMAS TVET</span><span>ELECTRICAL / ELECTRONICS</span></div>
         </div>
-        <address id="support" class="contact-info">
-          <p class="support-label">Design · Development · Electrical</p>
-          <ul>
-            <li><a href="https://wa.me/2349133240600">WhatsApp: +234 913 324 0600</a></li>
-            <li><a href="mailto:Proidea2025@gmail.com">Proidea2025@gmail.com</a></li>
-          </ul>
-          <p class="clariva-ref">Looking for study resources? <a href="https://proideacodestudio.github.io/Clariva/" target="_blank">Visit Clariva →</a></p>
-        </address>
       </div>
-      <div class="footer-meta">
-        PRO IDEA · DESIGN · DEVELOPMENT · ELECTRICAL · 2026
+    </section>
+
+    <section class="about section-pad" id="about">
+      <div class="site-shell about-layout">
+        <div><p class="eyebrow">04 / A little about me</p><h2>Curious by nature.<br><em>Intentional by design.</em></h2></div>
+        <div class="about-copy">
+          <p>I'm Promise, a first-year Electrical/Electronics Engineering student at the Federal University of Technology, Akure, and the person behind Pro Idea.</p>
+          <p>I enjoy bringing structure to ideas — whether that's building a visual identity, shaping a useful web experience or understanding the systems behind electrical technology. I value clear thinking, careful execution and learning through making.</p>
+          <div class="about-facts"><div><span>01</span><strong>Graphic design</strong></div><div><span>02</span><strong>Web development</strong></div><div><span>03</span><strong>Electrical engineering</strong></div></div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="contact section-pad" id="contact">
+      <div class="site-shell contact-layout">
+        <div><p class="eyebrow">05 / Contact</p><h2>Have something<br>in mind? <em>Let's talk.</em></h2></div>
+        <div class="contact-right"><p>For design enquiries, web projects, internships and collaborations, send a message and tell me a little about what you're working on.</p><a class="button button-light" href="mailto:Proidea2025@gmail.com?subject=Project%20or%20Collaboration%20Enquiry">Start a conversation <span aria-hidden="true">↗</span></a><a class="contact-detail" href="https://wa.me/2349133240600" target="_blank" rel="noopener noreferrer">WhatsApp&nbsp;&nbsp; +234 913 324 0600 ↗</a><a class="contact-detail" href="mailto:Proidea2025@gmail.com">Proidea2025@gmail.com ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-shell footer-top"><a class="wordmark" href="#top">promise<span>.</span></a><p>Designing with intent. Building with curiosity.</p><a href="#top">Back to top ↑</a></div>
+    <div class="site-shell footer-bottom"><span>© 2026 Promise Olutola</span><span>DESIGN · DIGITAL · ENGINEERING</span><a href="https://proideacodestudio.github.io/Clariva/" target="_blank" rel="noopener noreferrer">Clariva ↗</a></div>
   </footer>
 
   <script>
-    // ── HAMBURGER MENU ──────────────────────────────────────
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks  = document.querySelector('.nav-links');
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.primary-nav');
 
-    navToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen);
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      menuButton.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+      navigation.classList.toggle('is-open', !expanded);
     });
 
-    navLinks.querySelectorAll('a').forEach(link => {
+    navigation.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('nav-open');
-        navToggle.setAttribute('aria-expanded', false);
+        navigation.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
       });
     });
 
-
-    // ── ACTIVE NAV INDICATOR ────────────────────────────────
-    const sections   = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-
-    const activateNav = () => {
-      let current = '';
-      sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    const revealItems = document.querySelectorAll('.discipline-row, .project-card, .training-copy, .about-copy');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, activeObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            activeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => {
+        item.classList.add('will-reveal');
+        observer.observe(item);
       });
-      navAnchors.forEach(a => {
-        a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
-      });
-    };
-
-    window.addEventListener('scroll', activateNav);
-    activateNav();
-
-
-    // ── IMAGE LOADING INDICATORS ────────────────────────────
-    const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
-
-    lazyImgs.forEach(img => {
-      // Insert loading indicator inside the parent wrap
-      const wrap = img.closest('.work-image-wrap');
-      if (wrap) {
-        const indicator = document.createElement('span');
-        indicator.className = 'img-loading-indicator';
-        indicator.textContent = 'Loading...';
-        wrap.appendChild(indicator);
-
-        const hideIndicator = () => {
-          indicator.style.display = 'none';
-          img.classList.add('img-loaded');
-        };
-
-        if (img.complete && img.naturalWidth > 0) {
-          hideIndicator();
-        } else {
-          img.addEventListener('load',  hideIndicator);
-          img.addEventListener('error', hideIndicator);
-        }
-      } else {
-        // Images outside a wrap (fallback)
-        if (img.complete) {
-          img.classList.add('img-loaded');
-        } else {
-          img.addEventListener('load', () => img.classList.add('img-loaded'));
-        }
-      }
-    });
-
-
-    // ── NETWORK SPEED BANNER ────────────────────────────────
-   /* const banner = document.createElement('div');
-    banner.id = 'network-banner';
-    banner.textContent = 'Slow connection detected — images may take a moment to load';
-    document.body.appendChild(banner);
-
-    const showBanner = () => {
-      banner.classList.add('banner-visible'); 
-
-      // After 5 seconds move to top
-      setTimeout(() => {
-        banner.classList.add('banner-top');
-      }, 5000);
-    };
-
-    const checkNetwork = () => {
-      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      const isSlowByAPI = connection &&
-        (connection.effectiveType === '2g' ||
-         connection.effectiveType === 'slow-2g' ||
-         connection.saveData === true);
-
-      if (isSlowByAPI) {
-        showBanner();
-        return;
-      }
-
-      // Fallback: check if any lazy image hasn't loaded after 10 seconds
-      setTimeout(() => {
-        const anyUnloaded = [...lazyImgs].some(img => !img.classList.contains('img-loaded'));
-        if (anyUnloaded) showBanner();
-      }, 10000);
-    };
-
-    checkNetwork(); */
-
-
-    // ── SCROLL REVEAL ───────────────────────────────────────
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
   </script>
-
 </body>
 </html>
