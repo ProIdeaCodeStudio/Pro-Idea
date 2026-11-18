@@ -1,335 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Pro Idea - Professional graphics services">
-        <meta name="keywords" content="graphics, design, portfolio, Pro Idea">
-        <meta name="author" content="Pro Idea">
-        <title>Pro Idea - Graphic Design Portfolio</title>
-        <link rel="stylesheet" href="StyleSheet.css">
-        <link rel="icon" href="Transparent logo.png" type="image/png">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Selected graphic design work by Promise Olutola, including brand identity concepts, event graphics and IEEE Region 8 communication designs.">
+  <meta name="author" content="Promise Olutola">
+  <meta name="theme-color" content="#f5f5f2">
+  <title>Graphic Design Work — Promise Olutola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="StyleSheet.css">
+</head>
 <body>
- <!-- ── NAVBAR ─────────────────────────────────────────── -->
-  <nav id="navbar">
-    <div class="container">
-      <div class="nav-inner">
-        <img class="navbar-logo" src="Full Logo mark-transparent.png" alt="Pro Idea Logo">
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="index.html#about">About</a>
-          <a href="index.html#services">Services</a>
-          <a href="index.html#work/">Work</a>
-          <a href="index.html#contact">Contact</a>
-        </div>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+  <a class="skip-link" href="#gallery-main">Skip to content</a>
+  <nav class="site-nav" id="navbar" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="wordmark" href="index.html">PROMISE<span>OLUTOLA</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#disciplines">What I Do</a>
+        <a href="#gallery-main">Graphic Design</a>
+        <a href="index.html#experience">Experience</a>
+        <a class="nav-contact" href="index.html#contact">Let's Talk <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </nav>
 
-  <header>
-            <h1 class="cover-wordmark">Graphic Design Portfolio</h1>
-            <p class="cover-tagline">A curated showcase of branding, digital assets, and visual storytelling.</p>
-  </header>
-  <main class="container">
-        <section class="section">
-            <p class="section-label">Featured Work</p>
-            <h2 class="section-title">Selected Graphic Design Projects</h2>
-            <h3 style="text-align:center;padding-top:30px;margin:auto;">Pre-rebranding Designs</h3>
-            <div class="work-grid">
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MARCH.png" alt="Pro Idea social media design sample" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">New Month Flyer</p>
-                        <h3 class="work-title">Welcome to March</h3>
-                        <p class="work-copy">Creative asset built for sharing, engagement, and visual consistency across digital channels.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/Birthday-Design-2.png" alt="Pro Idea Birthday Flyer design sample" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Birthday Design</p>
-                        <h3 class="work-title">Birthday Celebration</h3>
-                        <p class="work-copy">Creative asset built for sharing, engagement, and visual consistency across digital channels.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/Fashion-related-design-1.png" alt="Pro Idea Fashion Flyer design sample" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Fashion Brand Flyer</p>
-                        <h3 class="work-title">Fashion Brand Design</h3>
-                        <p class="work-copy">Creative asset built for sharing, engagement, and visual consistency across digital channels.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/Book-cover-design.jpg" alt="Pro Idea Book Cover design sample" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Book Cover Design</p>
-                        <h3 class="work-title">Book Cover Art</h3>
-                        <p class="work-copy">Creative asset built for sharing, engagement, and visual consistency across digital channels.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/Learn-Maths-at-home.jpg" alt="Pro Idea Online Class design sample" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Online Learning Design</p>
-                        <h3 class="work-title">Online Learning Advert</h3>
-                        <p class="work-copy">Creative asset built for sharing, engagement, and visual consistency across digital channels.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/Shoe-Related-Design-1.png" alt="Pro Idea Shoe Brand design sample" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Shoe Brand Flyer</p>
-                        <h3 class="work-title">Shoe Brand Design</h3>
-                        <p class="work-copy">Creative asset built for sharing, engagement, and visual consistency across digital channels.</p>
-                    </div>
-                </article>
-            </div>
-            <h3 style="text-align:center;padding-top:30px;margin:auto;">Post-rebranding Designs</h3>
-            <div class="work-grid">
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/PAPA-D.png" alt="PAPA D wordmark" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Wordmark Logo</p>
-                        <h3 class="work-title">PAPA D</h3>
-                        <p class="work-copy">A refined identity concept that blends modern typography, Ember-inspired colour, and strategic imagery.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/Easter.png" alt="Easter flyer design" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Easter Flyer Design</p>
-                        <h3 class="work-title">Easter Celebration</h3>
-                        <p class="work-copy">A bold visual concept designed to capture audience attention for the stated event while blending modern typography, Ember-inspired colour, and strategic imagery.</p>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/The-Mountain-Experience.png" alt="The Mountain Experience event flyer design" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Poster Design</p>
-                        <h3 class="work-title">The Mountain Experience Flyer</h3>
-                        <p class="work-copy">A bold visual concept designed to capture audience attention for the stated event while blending modern typography, Ember-inspired colour, and strategic imagery.</p>
-                    </div>
-                </article>
-            </div>
-            <h3 style="text-align:center;padding-top:30px;margin:auto;">IEEE R8 Designs (Client-Approved)</h3>
-            <h4>Duration: 19/02/2026 - 14/03/2026</h4>
-            <p><strong>All designs shown below are approved by the IEEE R8 Ambassador.</strong></p>
-            <div class="work-grid">
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/IEEE Region 8 Flier-2.png" alt="Call for Volunteers flyer" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Call for Volunteers</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/IEEE Region 8 Flier - Call for sponsorship.png" alt="Call for Sponsorship flyer" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Call for sponsorship</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/IEEE-R8-Registration-team.jpg" alt="Meet the registration team flyer" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Registration Team</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MEET THE EVENT, OPERATIONS & LOGISTICS TEAM.jpg" alt="Meet the Event, Operations & Logistics Team" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Event, Operations & Logistics Team</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MEET THE FINANCE & SPONSORSHIP SUPPORT TEAM.jpg" alt="Meet the Finance & Sponsorship Support Team" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Finance & Sponsorship Support Team</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MEET THE MEDIA, DESIGN & PUBLICITY TEAM.jpg" alt="Meet the Media, Design & Publicity Team" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Media, Design & Publicity Team</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MEET THE PHOTOGRAPHY & VIDEOGRAPHY TEAM.jpg" alt="MEET THE PHOTOGRAPHY & VIDEOGRAPHY TEAM" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Photography & Videography Team</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MEET THE PITCH COMPETITION MANAGEMENT TEAM.jpg" alt="Meet the Pitch Competition Management Team" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Pitch Competition Management Team</h3>
-                    </div>
-                </article>
-                <article class="work-card reveal">
-                    <div class="work-image-wrap">
-                        <img class="gallery-img" src="Graphics/MEET THE PROGRAMS AND COORDINATION TEAM.jpg" alt="Meet the Programs and Coordination Team" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <p class="work-type">Flyer</p>
-                        <h3 class="work-title">Meet the Programs and Coordination Team</h3>
-                    </div>
-                </article>
-            </div>
-        </section>
+  <main id="gallery-main">
+    <header class="gallery-hero">
+      <div class="container">
+        <p class="eyebrow">PORTFOLIO / 01 — VISUAL COMMUNICATION</p>
+        <h1>Graphic design<br><span>& selected projects.</span></h1>
+        <p>A collection of visual communication work, identity explorations and event graphics. Each project reflects a stage in my ongoing design practice.</p>
+        <div class="gallery-hero-meta"><span>SELECTED GRAPHIC DESIGN WORK</span><span>SCROLL TO EXPLORE ↓</span></div>
+      </div>
+    </header>
 
-        <section class="cta-section">
-            <h2>Ready to Bring Your Vision to Life?</h2>
-            <p class="cta-copy">I provide professional graphic design services at affordable prices. From logos and branding to marketing materials and digital assets, let's create something amazing together.</p>
-            <a href="index.html#footer" target="_blank" class="cta-button">Get in Touch</a>
-        </section>
-    </main>
-  <div id="overlay">
-    <img id="enlarged-img" src="" alt="Enlarged view">
-    <button id="prev-btn">&#8592;</button>
-    <button id="next-btn">&#8594;</button>
-    <button id="close-btn">&#10005;</button>
-  </div>
+    <section class="gallery-section" aria-labelledby="pre-rebrand-title">
+      <div class="container">
+        <div class="gallery-group-heading"><div><p class="eyebrow">ARCHIVE / 01</p><h2 id="pre-rebrand-title">Earlier explorations</h2></div><p>Selected designs from my earlier creative practice.</p></div>
+        <div class="gallery-grid">
+          <article class="project-card"><a class="project-image" href="Graphics/MARCH.png"><img src="Graphics/MARCH.png" alt="Welcome to March social media design" loading="lazy"></a><div class="project-meta"><span>NEW MONTH FLYER</span><span>01</span></div><div class="project-title-row"><h3>Welcome to March</h3></div><p>A social media graphic created for a new-month message.</p></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/Birthday-Design-2.png"><img src="Graphics/Birthday-Design-2.png" alt="Birthday celebration design" loading="lazy"></a><div class="project-meta"><span>BIRTHDAY DESIGN</span><span>02</span></div><div class="project-title-row"><h3>Birthday Celebration</h3></div><p>A celebratory visual asset for digital sharing.</p></article>
+          <article class="project-card"><a class="project-image" href="Graphics/Fashion-related-design-1.png"><img src="Graphics/Fashion-related-design-1.png" alt="Fashion brand flyer design" loading="lazy"></a><div class="project-meta"><span>FASHION BRAND FLYER</span><span>03</span></div><div class="project-title-row"><h3>Fashion Brand Design</h3></div><p>A promotional graphic for a fashion-related brand.</p></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/Book-cover-design.jpg"><img src="Graphics/Book-cover-design.jpg" alt="Book cover design" loading="lazy"></a><div class="project-meta"><span>BOOK COVER</span><span>04</span></div><div class="project-title-row"><h3>Book Cover Art</h3></div><p>A cover design exploration focused on visual hierarchy.</p></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/Learn-Maths-at-home.jpg"><img src="Graphics/Learn-Maths-at-home.jpg" alt="Learn Maths at Home online class advert" loading="lazy"></a><div class="project-meta"><span>EDUCATION GRAPHIC</span><span>05</span></div><div class="project-title-row"><h3>Learn Maths at Home</h3></div><p>A promotional design for an online learning offer.</p></article>
+          <article class="project-card"><a class="project-image" href="Graphics/Shoe-Related-Design-1.png"><img src="Graphics/Shoe-Related-Design-1.png" alt="Shoe brand promotional design" loading="lazy"></a><div class="project-meta"><span>PRODUCT PROMOTION</span><span>06</span></div><div class="project-title-row"><h3>Shoe Brand Design</h3></div><p>A product-focused promotional graphic.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section gallery-section-muted" aria-labelledby="identity-title">
+      <div class="container">
+        <div class="gallery-group-heading"><div><p class="eyebrow">IDENTITY & CAMPAIGN WORK / 02</p><h2 id="identity-title">Selected concepts</h2></div><p>More recent explorations in identity and event communication.</p></div>
+        <div class="gallery-grid">
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/PAPA-D.png"><img src="Graphics/PAPA-D.png" alt="PAPA D wordmark identity concept" loading="lazy"></a><div class="project-meta"><span>WORDMARK IDENTITY</span><span>07</span></div><div class="project-title-row"><h3>PAPA D</h3></div><p>A wordmark concept exploring confident typography and a distinctive brand presence.</p></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/Easter.png"><img src="Graphics/Easter.png" alt="Easter celebration flyer design" loading="lazy"></a><div class="project-meta"><span>EVENT GRAPHIC</span><span>08</span></div><div class="project-title-row"><h3>Easter Celebration</h3></div><p>A seasonal event graphic developed around the event message and visual hierarchy.</p></article>
+          <article class="project-card"><a class="project-image" href="Graphics/The-Mountain-Experience.png"><img src="Graphics/The-Mountain-Experience.png" alt="The Mountain Experience event poster" loading="lazy"></a><div class="project-meta"><span>EVENT POSTER</span><span>09</span></div><div class="project-title-row"><h3>The Mountain Experience</h3></div><p>An event poster concept built around atmosphere and a strong visual focal point.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="ieee-title">
+      <div class="container">
+        <div class="gallery-group-heading"><div><p class="eyebrow">ORGANISATIONAL COMMUNICATION / 03</p><h2 id="ieee-title">IEEE Region 8 designs</h2></div><p>Designs approved by the IEEE Region 8 Ambassador. Project period: 19 February – 14 March 2026.</p></div>
+        <div class="gallery-grid">
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/IEEE Region 8 Flier-2.png"><img src="Graphics/IEEE Region 8 Flier-2.png" alt="IEEE Region 8 call for volunteers flyer" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>10</span></div><div class="project-title-row"><h3>Call for Volunteers</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/IEEE Region 8 Flier - Call for sponsorship.png"><img src="Graphics/IEEE Region 8 Flier - Call for sponsorship.png" alt="IEEE Region 8 call for sponsorship flyer" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>11</span></div><div class="project-title-row"><h3>Call for Sponsorship</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/IEEE-R8-Registration-team.jpg"><img src="Graphics/IEEE-R8-Registration-team.jpg" alt="IEEE Region 8 registration team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>12</span></div><div class="project-title-row"><h3>Meet the Registration Team</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/MEET THE EVENT, OPERATIONS & LOGISTICS TEAM.jpg"><img src="Graphics/MEET THE EVENT, OPERATIONS & LOGISTICS TEAM.jpg" alt="IEEE event, operations and logistics team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>13</span></div><div class="project-title-row"><h3>Event, Operations & Logistics</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/MEET THE FINANCE & SPONSORSHIP SUPPORT TEAM.jpg"><img src="Graphics/MEET THE FINANCE & SPONSORSHIP SUPPORT TEAM.jpg" alt="IEEE finance and sponsorship support team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>14</span></div><div class="project-title-row"><h3>Finance & Sponsorship Support</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/MEET THE MEDIA, DESIGN & PUBLICITY TEAM.jpg"><img src="Graphics/MEET THE MEDIA, DESIGN & PUBLICITY TEAM.jpg" alt="IEEE media, design and publicity team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>15</span></div><div class="project-title-row"><h3>Media, Design & Publicity</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/MEET THE PHOTOGRAPHY & VIDEOGRAPHY TEAM.jpg"><img src="Graphics/MEET THE PHOTOGRAPHY & VIDEOGRAPHY TEAM.jpg" alt="IEEE photography and videography team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>16</span></div><div class="project-title-row"><h3>Photography & Videography</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/MEET THE PITCH COMPETITION MANAGEMENT TEAM.jpg"><img src="Graphics/MEET THE PITCH COMPETITION MANAGEMENT TEAM.jpg" alt="IEEE pitch competition management team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>17</span></div><div class="project-title-row"><h3>Pitch Competition Management</h3></div></article>
+          <article class="project-card"><a class="project-image project-image-contained" href="Graphics/MEET THE PROGRAMS AND COORDINATION TEAM.jpg"><img src="Graphics/MEET THE PROGRAMS AND COORDINATION TEAM.jpg" alt="IEEE programs and coordination team graphic" loading="lazy"></a><div class="project-meta"><span>IEEE REGION 8</span><span>18</span></div><div class="project-title-row"><h3>Programs & Coordination</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-cta">
+      <div class="container gallery-cta-inner"><div><p class="eyebrow">NEXT STEP</p><h2>Have a project<br>to discuss?</h2></div><a class="button button-primary" href="index.html#contact">Get in touch ↗</a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top"><a class="wordmark footer-wordmark" href="index.html">PROMISE<span>OLUTOLA</span></a><p>Creative practice. Technical curiosity. Continuous learning.</p><a href="#gallery-main" class="back-top">BACK TO TOP ↑</a></div>
+    <div class="container footer-bottom"><span>© 2026 PROMISE OLUTOLA</span><span>GRAPHIC DESIGN PORTFOLIO</span><a href="index.html">HOME ↗</a></div>
+  </footer>
+
   <script>
-    // ── HAMBURGER MENU ──────────────────────────────────────
     const navToggle = document.querySelector('.nav-toggle');
-    const navLinks  = document.querySelector('.nav-links');
-
+    const navLinks = document.querySelector('.nav-links');
     navToggle.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
     });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('nav-open');
-        navToggle.setAttribute('aria-expanded', false);
-      });
-    });
-
-
-    // ── IMAGE LOADING INDICATORS ────────────────────────────
-    const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
-
-    lazyImgs.forEach(img => {
-      const wrap = img.closest('.work-image-wrap');
-      if (wrap) {
-        const indicator = document.createElement('span');
-        indicator.className = 'img-loading-indicator';
-        indicator.textContent = 'Loading...';
-        wrap.appendChild(indicator);
-
-        const hideIndicator = () => {
-          indicator.style.display = 'none';
-          img.classList.add('img-loaded');
-        };
-
-        if (img.complete && img.naturalWidth > 0) {
-          hideIndicator();
-        } else {
-          img.addEventListener('load',  hideIndicator);
-          img.addEventListener('error', hideIndicator);
-        }
-      } else {
-        if (img.complete) {
-          img.classList.add('img-loaded');
-        } else {
-          img.addEventListener('load', () => img.classList.add('img-loaded'));
-        }
-      }
-    });
-
-
-    // ── NETWORK SPEED BANNER ────────────────────────────────
-    const banner = document.createElement('div');
-    banner.id = 'network-banner';
-    banner.textContent = 'Slow connection detected — images may take a moment to load';
-    document.body.appendChild(banner);
-
-    const showBanner = () => {
-      banner.classList.add('banner-visible');
-      setTimeout(() => {
-        banner.classList.add('banner-top');
-      }, 5000);
-    };
-
-    const checkNetwork = () => {
-      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      const isSlowByAPI = connection &&
-        (connection.effectiveType === '2g' ||
-         connection.effectiveType === 'slow-2g' ||
-         connection.saveData === true);
-
-      if (isSlowByAPI) {
-        showBanner();
-        return;
-      }
-
-      setTimeout(() => {
-        const anyUnloaded = [...lazyImgs].some(img => !img.classList.contains('img-loaded'));
-        if (anyUnloaded) showBanner();
-      }, 10000);
-    };
-
-    checkNetwork();
-
-
-    // ── SCROLL REVEAL ───────────────────────────────────────
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+    const cards = document.querySelectorAll('.project-card');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, instance) => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); instance.unobserve(entry.target); }
+      }), { threshold: 0.08 });
+      cards.forEach(card => { card.classList.add('reveal'); observer.observe(card); });
+    }
   </script>
-
 </body>
 </html>
