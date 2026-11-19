@@ -1,0 +1,49 @@
+/* PRO IDEA — ORIGINAL EMBER BRAND TOKENS
+   Source of truth recovered from StyleSheet.css at commit
+   21ddcaa9f71b6fb09b283d7f5a93f18baf0c5b9e.
+*/
+:root {
+  /* Original Ember Colour Palette */
+  --deep-ink: #111008;
+  --ash: #1E1B12;
+  --ember-fog: #8A7A5A;
+  --parchment: #DDD0B3;
+  --warm-white: #F5EDD8;
+  --burnt-ember: #B5660F;
+  --amber: #E8941A;
+  --ember-tint: #F2B455;
+
+  /* Original RGBA variants */
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(0, 0, 0, 0.15);
+  --shadow-card: rgba(0, 0, 0, 0.25);
+
+  /* Original typography */
+  --font-display: 'Syne', sans-serif;
+  --font-accent: 'Cormorant Garamond', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-label: 'DM Mono', monospace;
+
+  /* Original type scale */
+  --text-hero: clamp(52px, 9vw, 96px);
+  --text-h2: clamp(28px, 5vw, 48px);
+  --text-h3: clamp(18px, 2.5vw, 24px);
+  --text-lg: clamp(16px, 2vw, 20px);
+  --text-md: clamp(14px, 1.8vw, 16px);
+  --text-sm: clamp(12px, 1.4vw, 14px);
+  --text-label: clamp(9px, 1vw, 11px);
+
+  /* Original spacing scale */
+  --space-xs: clamp(4px, .5vw, 6px);
+  --space-sm: clamp(8px, 1vw, 12px);
+  --space-md: clamp(16px, 2vw, 24px);
+  --space-lg: clamp(32px, 4vw, 48px);
+  --space-xl: clamp(60px, 7vw, 96px);
+  --space-2xl: clamp(96px, 10vw, 140px);
+
+  /* Original border and motion tokens */
+  --border-thin: 1px solid var(--ash);
+  --border-amber: 1px solid var(--amber);
+  --radius: 8px;
+  --transition: all .3s ease;
+}

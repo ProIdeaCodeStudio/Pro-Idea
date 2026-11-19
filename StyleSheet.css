@@ -1,23 +1,25 @@
+@import url('BrandTokens.css');
+
 /* PROMISE OLUTOLA — EDITORIAL PORTFOLIO
    Visual direction: warm paper, ink, cobalt, oversized type, precise grids.
    Standalone visual direction for the portfolio homepage.
 */
 
 :root {
-  color-scheme: light;
-  --paper: #f4f3ef;
-  --paper-deep: #e9e8e2;
-  --ink: #171816;
-  --ink-soft: #555751;
-  --muted: #85877f;
-  --line: #d4d5ce;
-  --blue: #3157e8;
-  --blue-dark: #2344c5;
-  --white: #fff;
-  --sans: 'DM Sans', Arial, sans-serif;
-  --display: 'Manrope', Arial, sans-serif;
-  --serif: 'Playfair Display', Georgia, serif;
-  --mono: 'DM Mono', monospace;
+  color-scheme: dark;
+  --paper: var(--deep-ink);
+  --paper-deep: var(--ash);
+  --ink: var(--warm-white);
+  --ink-soft: var(--parchment);
+  --muted: var(--ember-fog);
+  --line: rgba(138,122,90,.38);
+  --blue: var(--amber);
+  --blue-dark: var(--burnt-ember);
+  --white: var(--warm-white);
+  --sans: var(--font-body);
+  --display: var(--font-display);
+  --serif: var(--font-accent);
+  --mono: var(--font-label);
   --shell: 1180px;
   --gutter: clamp(22px, 5vw, 72px);
   --section-space: clamp(88px, 12vw, 156px);
@@ -203,4 +205,44 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .will-reveal { opacity: 1; transform: none; }
+}
+
+
+/* Ember application layer: retain the editorial layout, restore the exact brand palette. */
+body { background: var(--deep-ink); color: var(--warm-white); }
+.site-header { background: rgba(17,16,8,.92); border-bottom-color: rgba(138,122,90,.28); }
+.primary-nav a { color: var(--parchment); }
+.primary-nav .nav-contact { color: var(--warm-white); border-color: var(--ember-fog); }
+.disciplines, .training { background: var(--ash); }
+.discipline-row, .discipline-row:last-child { border-color: rgba(138,122,90,.45); }
+.project-image { background: var(--ash); }
+.project-card > p, .section-aside, .discipline-description, .training-copy > p:not(.training-lead), .about-copy > p { color: var(--parchment); }
+.hero-bottomline, .project-meta, .project-card > p { color: var(--ember-fog); }
+.hero-kicker, .index-number, .index-arrow, .project-meta span:last-child, .text-link span { color: var(--amber); }
+.hero h1 em, .section-heading h2 em, .training h2 em, .about h2 em, .contact h2 em { color: var(--amber); }
+.hero-index { border-color: var(--ember-fog); }
+.hero-index > a { border-color: rgba(138,122,90,.35); }
+.button-dark { background: var(--amber); color: var(--deep-ink); }
+.button-dark:hover { background: var(--burnt-ember); color: var(--warm-white); }
+.text-link { color: var(--warm-white); border-color: var(--ember-fog); }
+.round-link { border-color: var(--ember-fog); color: var(--amber); }
+.round-link:hover { background: var(--amber); border-color: var(--amber); color: var(--deep-ink); }
+.web-preview { background: var(--ash); color: var(--warm-white); }
+.web-preview strong span { color: var(--amber); }
+.preview-window { background: rgba(245,237,216,.12); box-shadow: 0 18px 50px rgba(0,0,0,.2); }
+.preview-window i, .preview-window b { background: rgba(232,148,26,.24); }
+.training-tags span { border-color: var(--ember-fog); color: var(--parchment); }
+.about-facts, .about-facts div { border-color: rgba(138,122,90,.4); }
+.contact { background: #0b0a06; }
+.contact h2 em { color: var(--amber); }
+.button-light { background: var(--warm-white); color: var(--deep-ink); }
+.button-light:hover { background: var(--amber); }
+.footer-top > a:last-child, .contact-detail { color: var(--parchment); }
+.site-footer { background: #0b0a06; border-top-color: rgba(138,122,90,.4); }
+.footer-bottom { border-color: rgba(138,122,90,.3); }
+.menu-toggle { border-color: var(--ember-fog); }
+.menu-toggle span { background: var(--warm-white); }
+@media (max-width: 620px) {
+  .primary-nav { background: var(--deep-ink); border-bottom-color: var(--ember-fog); }
+  .primary-nav a { border-bottom-color: rgba(138,122,90,.3); }
 }
