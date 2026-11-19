@@ -112,7 +112,7 @@ button{font:inherit}
 .about-facts div{display:flex;gap:24px;padding:14px 0;border-bottom:1px solid var(--rule)}
 .about-facts span{color:var(--amber);font:10px var(--font-label)}
 .about-facts strong{font-size:12px}
-.contact{background:#0b0a06;color:var(--warm-white)}
+.contact{background:var(--deep-ink);color:var(--warm-white)}
 .contact-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(50px,10vw,150px)}
 .contact .eyebrow{color:var(--parchment)}
 .contact h2{font-size:clamp(48px,7vw,88px)}
@@ -123,7 +123,7 @@ button{font:inherit}
 .button-light:hover{background:var(--amber)}
 .contact-detail{margin-top:19px;color:var(--parchment);font-size:12px}
 .contact-detail:hover{color:var(--amber)}
-.site-footer{background:#0b0a06;color:var(--warm-white);border-top:1px solid var(--rule)}
+.site-footer{background:var(--deep-ink);color:var(--warm-white);border-top:1px solid var(--rule)}
 .footer-top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:30px}
 .footer-top p{margin:0;color:var(--parchment);font-size:11px}
 .footer-top>a:last-child{color:var(--parchment);font-size:11px}
