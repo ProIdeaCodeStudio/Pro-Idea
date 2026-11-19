@@ -8,6 +8,7 @@
         <meta name="author" content="Pro Idea">
         <title>Pro Idea - Graphic Design Portfolio</title>
         <link rel="stylesheet" href="StyleSheet.css">
+        <link rel="stylesheet" href="Gallery.css">
         <link rel="icon" href="Transparent logo.png" type="image/png">
     </head>
 <body>
@@ -329,6 +330,63 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Accessible gallery lightbox with keyboard and previous/next controls.
+    const galleryImages = [...document.querySelectorAll('.gallery-img')];
+    const overlay = document.getElementById('overlay');
+    const enlargedImage = document.getElementById('enlarged-img');
+    const closeButton = document.getElementById('close-btn');
+    const previousButton = document.getElementById('prev-btn');
+    const nextButton = document.getElementById('next-btn');
+    let activeImageIndex = 0;
+    let lastFocusedElement = null;
+
+    function showGalleryImage(index) {
+      activeImageIndex = (index + galleryImages.length) % galleryImages.length;
+      const selected = galleryImages[activeImageIndex];
+      enlargedImage.src = selected.currentSrc || selected.src;
+      enlargedImage.alt = selected.alt || 'Selected portfolio artwork';
+    }
+    function openGalleryImage(index) {
+      lastFocusedElement = document.activeElement;
+      showGalleryImage(index);
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('gallery-overlay-open');
+      closeButton.focus();
+    }
+    function closeGalleryImage() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gallery-overlay-open');
+      enlargedImage.removeAttribute('src');
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+    galleryImages.forEach((image, index) => {
+      image.tabIndex = 0;
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', 'Enlarge: ' + (image.alt || 'portfolio artwork'));
+      image.addEventListener('click', () => openGalleryImage(index));
+      image.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openGalleryImage(index);
+        }
+      });
+    });
+    previousButton.addEventListener('click', () => showGalleryImage(activeImageIndex - 1));
+    nextButton.addEventListener('click', () => showGalleryImage(activeImageIndex + 1));
+    closeButton.addEventListener('click', closeGalleryImage);
+    overlay.addEventListener('click', event => {
+      if (event.target === overlay) closeGalleryImage();
+    });
+    document.addEventListener('keydown', event => {
+      if (!overlay.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeGalleryImage();
+      if (event.key === 'ArrowLeft') showGalleryImage(activeImageIndex - 1);
+      if (event.key === 'ArrowRight') showGalleryImage(activeImageIndex + 1);
+    });
+    overlay.setAttribute('aria-hidden', 'true');
   </script>
 
 </body>
